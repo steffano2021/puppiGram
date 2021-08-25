@@ -31,3 +31,29 @@ def create_image():
         return new_image.to_dict()
     else:
         return {'errors':form.errors}, 500
+
+
+@image_routes.route('/<int:id>', methods=['GET','PUT', 'DELETE'])
+def put_and_del_image():
+
+    image = Image.query.filter(Image.id == id).first()
+
+    if request.method == 'GET':
+        return image.to_dict()
+
+    elif request.method == 'PUT':
+        form = ImageCreateForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit():
+            data = form.data
+            image.image = data['image']
+            image.caption = data['caption']
+            db.session.commit()
+            return image.to_dict()
+        else:
+            return {'errors':form.errors}, 500
+
+    elif request.method == 'DELETE':
+        db.session.delete(image)
+        db.session.commit()
+        return {"deletion":"successful"}
