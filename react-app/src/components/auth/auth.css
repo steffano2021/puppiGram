@@ -96,6 +96,8 @@ nav{
     flex-direction: column;
     justify-content: space-around;
     height: 140px;
+    /* border-style: solid; */
+    align-items: center;
 }
 
 
