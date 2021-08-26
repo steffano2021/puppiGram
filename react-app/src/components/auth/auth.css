@@ -1,0 +1,113 @@
+
+nav{
+    display: none;
+}
+
+.auth_background{
+    /* background-color: rgba(46, 108, 224, 0.63); */
+    background: linear-gradient(90deg, rgba(214, 233, 251, 0.845) 0%, rgba(130, 195, 251, 0.743)100%);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth_container{
+    display: flex;
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+    position: relative;
+    /* border-style: solid; */
+}
+
+.auth-photo{
+    width: 650px;
+    height: 500px;
+}
+
+.auth-photo-text{
+    position: absolute;
+    left: 20px;
+    color: #fff;
+    font-size: 20px;
+}
+
+.auth_form_container{
+    background-color: #fff;
+    height: 500px;
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-form-logo{
+    /* border-style: solid; */
+    width: auto;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.auth-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-form-input_container{
+    position: relative;
+    border: 2px solid rgba(46, 46, 46, 0.178);
+    width: 180px;
+    height: 30px;
+    border-radius: 14px;
+    margin-top: 15px;
+    padding-left: 50px;
+}
+
+
+.auth-form-input_container i{
+    position: absolute;
+    left: 15px;
+    top: 6px;
+}
+
+.auth-form-input_container input{
+    position: absolute;
+    left: 40px;
+    top: 2px;
+    height: 25px;
+    border: none;
+    font-size: 18px;
+    width: 170px;
+}
+
+.auth-form-input_container input:focus {
+    outline: none;
+}
+
+.auth-form-btn_container{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 140px;
+}
+
+
+.auth-form-btn_container button{
+    background: linear-gradient(90deg, rgba(66, 157, 243, 0.845) 0%, rgba(130, 195, 251, 0.743)100%);
+    color: #fff;
+    padding: 5px;
+    width: 130px;
+    border-radius: 10px;
+    border: none;
+}
+
+.auth-form-btn_container button:hover {
+    background-color: rgb(34, 44, 133);
+}
