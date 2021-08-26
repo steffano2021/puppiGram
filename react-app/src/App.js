@@ -14,6 +14,7 @@ import { fetchAllImages } from './store/image';
 
 // component pages
 import HomePage from './components/home/homePage';
+import ImagePostForm from './components/image/postImagePage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -33,9 +34,9 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       <Switch>
         <Route path='/' exact={true} >
+          <NavBar />
           <HomePage />
         </Route>
         <Route path='/login' exact={true}>
@@ -43,6 +44,9 @@ function App() {
         </Route>
         <Route path='/signup' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/img' exact={true}>
+          <ImagePostForm />
         </Route>
       </Switch>
     </BrowserRouter>
