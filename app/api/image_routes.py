@@ -20,12 +20,11 @@ def get_images():
 def create_image():
     form = ImageCreateForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data)
     if form.validate_on_submit():
         data = form.data
-        print(data)
         file = data['image']
         file_url = upload_file_to_s3(file, Config.S3_BUCKET)
-        print(file_url)
         new_image = Image(
             user_id = data['user_id'],
             image = file_url,
@@ -37,8 +36,7 @@ def create_image():
         db.session.commit()
         return new_image.to_dict()
     else:
-        return {'a':'it didnt validate'}
-        # return {'errors':form.errors}, 500
+        return {'errors': form.errors}, 500
 
 
 @image_routes.route('/<int:id>', methods=['GET','PUT', 'DELETE'])

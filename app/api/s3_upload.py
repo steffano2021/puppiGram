@@ -1,3 +1,4 @@
+## this route is not used, is just an example to follow
 from flask import Blueprint, request
 from flask_login import login_required
 
@@ -20,7 +21,6 @@ def upload_file():
 
     if file:
         file_url = upload_file_to_s3(file, Config.S3_BUCKET)
-        #! need to comeback and incorporate this to my image routes
 
         file = File(
             user_id=request.form.get('user_id'),

@@ -51,10 +51,10 @@ export const fetchCreateImage = (user_id, image, caption) => async (dispatch) =>
 
     const data = await response.json()
     if (response.ok){
-        // dispatch(addImage(data))
+        dispatch(addImage(data))
         return data
     } else {
-        return 'bad request, this coming from store'
+        return data
     }
 }
 

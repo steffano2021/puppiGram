@@ -8,6 +8,8 @@ const ImagePostForm = () => {
 
     const history = useHistory();
     const dispatch = useDispatch();
+
+    // need to change this when ready
     // const user_id = useSelector(state => state.session.user?.id);
     const user_id = 1;
 
@@ -16,6 +18,7 @@ const ImagePostForm = () => {
     const p1 = useRef();
     const p2 = useRef();
 
+    const [errors, setErrors] = useState([]);
     const [image, setImage] = useState('');
     const [caption, setCaption] = useState('');
 
@@ -48,9 +51,7 @@ const ImagePostForm = () => {
                 // console.log(reader.result, 'inside load') this works. shows code of image
                 dropZone.current.style.backgroundImage = `url('${reader.result}')`;
             };
-
             imageInput.current.files = e.dataTransfer.files;
-            // console.log(image,'this')
             p1.current.classList.add('disappear')
             p2.current.classList.add('disappear')
         }
@@ -82,9 +83,15 @@ const ImagePostForm = () => {
 
     const submitImage = async (e) => {
         e.preventDefault();
-        console.log(image, 'image sending thru')
+        // console.log(image, 'image sending to backend')
         const data = await dispatch(fetchCreateImage(user_id, image, caption))
-        console.log(data)
+        if (data.errors){
+            setErrors(data.errors)
+            console.log(errors)
+            return
+        } else {
+            history.push('/')
+        }
     }
 
     return (
@@ -98,7 +105,7 @@ const ImagePostForm = () => {
                 <input  onChange={showImage} ref={imageInput} type='file' className='dropzone_input' ></input>
             </div>
                 <button type='submit' onClick={()=>setImage(imageInput.current.files[0])} >submit image</button>
-                <button type='button' onClick={resetAll}>reset</button>
+                <button type='reset' onClick={resetAll}>reset</button>
                 <button type='button' onClick={() => history.push('/')} >cancel</button>
         </form>
     </div>
