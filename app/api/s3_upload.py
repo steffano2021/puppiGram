@@ -6,7 +6,7 @@ from app.aws_s3 import upload_file_to_s3
 from app.models import db, Image
 
 
-file_routes = Blueprint('file', __name__)
+# file_routes = Blueprint('file', __name__)
 
   #Don't forget to register your Blueprint
 

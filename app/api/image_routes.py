@@ -4,6 +4,9 @@ from datetime import date, datetime
 from app.forms.image_create_form import ImageCreateForm
 from app.models import Image, db
 
+from app.config import Config
+from app.aws_s3 import upload_file_to_s3
+
 image_routes = Blueprint('images', __name__)
 
 
@@ -19,9 +22,13 @@ def create_image():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         data = form.data
+        print(data)
+        file = data['image']
+        file_url = upload_file_to_s3(file, Config.S3_BUCKET)
+        print(file_url)
         new_image = Image(
             user_id = data['user_id'],
-            image = data['image'],
+            image = file_url,
             caption = data['caption'],
             created_at = datetime.now(),
             updated_at = datetime.now(),
@@ -30,7 +37,8 @@ def create_image():
         db.session.commit()
         return new_image.to_dict()
     else:
-        return {'errors':form.errors}, 500
+        return {'a':'it didnt validate'}
+        # return {'errors':form.errors}, 500
 
 
 @image_routes.route('/<int:id>', methods=['GET','PUT', 'DELETE'])

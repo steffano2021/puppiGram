@@ -38,6 +38,26 @@ export const fetchAllImages = () => async (dispatch) => {
     }
 }
 
+export const fetchCreateImage = (user_id, image, caption) => async (dispatch) => {
+    const form = new FormData();
+    // repeat as necessary  for each required form field
+    form.append('user_id', user_id);
+    form.append('caption', caption);
+    form.append('image', image);
+    const response = await fetch('/api/images/create', {
+        method: "POST",
+        body: form
+    });
+
+    const data = await response.json()
+    if (response.ok){
+        // dispatch(addImage(data))
+        return data
+    } else {
+        return 'bad request, this coming from store'
+    }
+}
+
 
 let initialState = {};
 
