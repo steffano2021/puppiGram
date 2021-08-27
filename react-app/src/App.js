@@ -15,6 +15,7 @@ import { fetchAllImages } from './store/image';
 // component pages
 import HomePage from './components/home/homePage';
 import ImagePostForm from './components/image/postImagePage';
+import SplashPage from './components/splash/splashPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -37,15 +38,20 @@ function App() {
       <Switch>
         <Route path='/' exact={true} >
           <NavBar />
-          <HomePage />
+          <SplashPage />
         </Route>
+        <ProtectedRoute path='/home' exact={true} >
+          <NavBar />
+          <HomePage />
+        </ProtectedRoute>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
         <Route path='/signup' exact={true}>
           <SignUpForm />
         </Route>
-        <Route path='/img' exact={true}>
+        <Route path='/images/create' exact={true}>
+          <NavBar />
           <ImagePostForm />
         </Route>
       </Switch>

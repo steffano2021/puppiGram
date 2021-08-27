@@ -14,9 +14,15 @@ const NavBar = () => {
     <nav>
       <div className='nav_container'>
         <div className = 'nav_logo'>
+          { user ?
+          <NavLink to='/home' exact={true} activeClassName='active'>
+            Logo Here
+          </NavLink>
+          :
           <NavLink to='/' exact={true} activeClassName='active'>
             Logo Here
           </NavLink>
+          }
         </div>
         <div className='nav_btns'>
           {!user ? <>
