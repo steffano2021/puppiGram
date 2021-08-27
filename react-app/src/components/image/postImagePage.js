@@ -79,6 +79,7 @@ const ImagePostForm = () => {
         dropZone.current.style.backgroundImage = null;
         p1.current.classList.remove('disappear')
         p2.current.classList.remove('disappear')
+        setErrors([])
     }
 
     const submitImage = async (e) => {
@@ -95,20 +96,28 @@ const ImagePostForm = () => {
     }
 
     return (
+        <div className='postImage-page'>
         <div className='imagePost_container'>
         <form onSubmit={submitImage} encType='multipart/form-data'>
             <div className='dropzone' ref={dropZone} onClick={openInput}
              onDragOver={dragOver} onDragLeave={exitDrag} onDragEnd={exitDrag}
              onDrop={displayImage} >
-                <p ref={p1} >Drag and Drop</p>
-                <p ref={p2} >or click to submit a file</p>
+                <span className='p-tag' ref={p1} >Drag and Drop</span>
+                <span className='p-tag' ref={p2} >or click to submit a file</span>
                 <input  onChange={showImage} ref={imageInput} type='file' className='dropzone_input' ></input>
             </div>
+            <div className='imagePost-caption'>
+            <span>{errors?.image}</span>
+            <textarea type='text' placeholder='OPTIONAL: Write a caption...' onChange={(e) => {setCaption(e.target.value)}} cols='10' rows='5' ></textarea>
+            </div>
+            <div className='imagePost-buttons_container'>
                 <button type='submit' onClick={()=>setImage(imageInput.current.files[0])} >submit image</button>
                 <button type='reset' onClick={resetAll}>reset</button>
-                <button type='button' onClick={() => history.push('/')} >cancel</button>
+                <button type='button' onClick={() => history.push('/home')} >cancel</button>
+            </div>
         </form>
-    </div>
+        </div>
+        </div>
     )
 }
 

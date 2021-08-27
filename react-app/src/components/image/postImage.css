@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap');
+
+.postImage-page{
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagePost_container{
+    /* padding-bottom: 10px; */
+}
 
 .dropzone{
     width: 400px;
@@ -11,6 +25,8 @@
     background-size:contain;
     background-position: center;
     background-repeat: no-repeat;
+    border-radius: 8px;
+    background-color: whitesmoke;
 }
 
 .dropzone_input{
@@ -31,4 +47,55 @@
 
 .disappear{
     display: none;
+}
+
+.p-tag{
+    color: rgb(168, 168, 168);
+    font-size: 30px;
+    font-family: 'Bebas Neue', cursive;
+}
+
+.imagePost-caption{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.imagePost-caption textarea{
+    resize: none;
+    width: 400px;
+    min-height: 80px;
+    height: auto;
+    border-radius: 8px;
+    color: rgb(39, 39, 39);
+    background-color: whitesmoke;
+}
+
+.imagePost-caption span{
+    position: absolute;
+    color: red;
+    top: -30px;
+    left: 100px;
+    font-family: 'Cairo', sans-serif;
+}
+
+
+.imagePost-buttons_container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.imagePost-buttons_container button{
+    padding:0.7em 1.4em;
+    margin:0 0.3em 0.3em 0;
+    border-radius: 8px;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family: 'Bebas Neue', cursive;
+    text-transform:uppercase;
+    font-weight:400;
+    color:#FFFFFF;
+    background-color:#7bace4;
+    box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+    text-align:center;
 }

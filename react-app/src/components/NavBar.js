@@ -37,10 +37,16 @@ const NavBar = () => {
                 </NavLink>
               </div>
               </>
-              :
+              : <>
               <div>
                 <LogoutButton />
               </div>
+              <div>
+                <NavLink to='/images/create' exact={true} activeClassName='active' >
+                  post
+                </NavLink>
+              </div>
+              </>
           }
         </div>
     </div>

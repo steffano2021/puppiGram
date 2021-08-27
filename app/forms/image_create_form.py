@@ -7,11 +7,11 @@ from app.models import Image
 def is_not_undefined(form,field):
     image = field.data
     if image == 'undefined':
-        raise ValidationError('Enter an Image')
+        raise ValidationError('Please Enter an Image to post')
 
 
 
 class ImageCreateForm(FlaskForm):
     user_id = IntegerField()
-    caption = StringField('caption')
+    caption = TextAreaField('caption')
     image = FileField('image', validators=[is_not_undefined])
