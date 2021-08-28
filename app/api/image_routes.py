@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-# from flask_login import login_required
+from flask_login import login_required
 from datetime import date, datetime
 from app.forms.image_create_form import ImageCreateForm
 from app.forms.image_edit_form import ImageEditForm
@@ -18,6 +18,7 @@ def get_images():
 
 
 @image_routes.route('/create', methods=['POST'])
+@login_required
 def create_image():
     form = ImageCreateForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -41,6 +42,7 @@ def create_image():
 
 
 @image_routes.route('/<int:id>', methods=['GET','PUT', 'PATCH', 'DELETE'])
+@login_required
 def put_and_del_image(id):
     image = Image.query.filter(Image.id == id).first()
 
