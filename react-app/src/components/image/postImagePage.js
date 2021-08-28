@@ -105,8 +105,9 @@ const ImagePostForm = () => {
                 <input  onChange={showImage} ref={imageInput} type='file' className='dropzone_input' ></input>
             </div>
             <div className='imagePost-caption'>
-            <span>{errors?.image}</span>
-            <textarea type='text' placeholder='OPTIONAL: Write a caption...' onChange={(e) => {setCaption(e.target.value)}} cols='10' rows='5' ></textarea>
+            <span className='error-Image'>{errors?.image}</span>
+            <textarea maxLength='50' type='text' placeholder='OPTIONAL: Write a caption...' onChange={(e) => {setCaption(e.target.value)}} cols='10' rows='5' ></textarea>
+            <span className='error-Caption'>{errors?.caption}</span>
             </div>
             <div className='imagePost-buttons_container'>
                 <button type='submit' onClick={()=>setImage(imageInput.current.files[0])} >submit image</button>

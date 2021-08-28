@@ -13,5 +13,5 @@ def is_not_undefined(form,field):
 
 class ImageCreateForm(FlaskForm):
     user_id = IntegerField()
-    caption = TextAreaField('caption')
+    caption = TextAreaField('caption', validators=[Length(min=0, max=50, message="Caption must be less than %(max)d characters")])
     image = FileField('image', validators=[is_not_undefined])

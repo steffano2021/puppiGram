@@ -70,6 +70,8 @@ def put_and_del_image(id):
             image.caption = data['caption']
             db.session.commit()
             return image.to_dict()
+        else:
+            return {'errors':form.errors}, 500
 
     elif request.method == 'DELETE':
         db.session.delete(image)

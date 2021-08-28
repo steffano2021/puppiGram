@@ -9,9 +9,8 @@
     align-items: center;
 }
 
-.imagePost_container{
-    /* padding-bottom: 10px; */
-}
+/* .imagePost_container{
+} */
 
 .dropzone{
     width: 400px;
@@ -71,7 +70,7 @@
     background-color: whitesmoke;
 }
 
-.imagePost-caption span{
+.imagePost-caption .error-Image{
     position: absolute;
     color: red;
     top: -30px;
@@ -79,6 +78,13 @@
     font-family: 'Cairo', sans-serif;
 }
 
+.imagePost-caption .error-Caption{
+    position: absolute;
+    color: red;
+    top: 85px;
+    left: 70px;
+    font-family: 'Cairo', sans-serif;
+}
 
 .imagePost-buttons_container{
     display: flex;

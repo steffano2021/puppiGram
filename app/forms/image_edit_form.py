@@ -8,4 +8,4 @@ from app.models import Image
 
 class ImageEditForm(FlaskForm):
     user_id = IntegerField()
-    caption = TextAreaField('caption')
+    caption = TextAreaField('caption', validators=[Length(min=0, max=50, message="Caption must be less than %(max)d characters")])
