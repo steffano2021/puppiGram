@@ -9,9 +9,7 @@ const ImagePostForm = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    // need to change this when ready
-    // const user_id = useSelector(state => state.session.user?.id);
-    const user_id = 1;
+    const user_id = useSelector(state => state.session.user?.id);
 
     const imageInput = useRef();
     const dropZone = useRef();
@@ -91,7 +89,7 @@ const ImagePostForm = () => {
             console.log(errors)
             return
         } else {
-            history.push('/')
+            history.push('/home')
         }
     }
 

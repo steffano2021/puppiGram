@@ -1,15 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import './splash.css'
 
 
 const SplashPage = () => {
 
+    const user = useSelector(state => state.session.user);
+
+
+    if (user) {
+        return <Redirect to='/home' />;
+    }
+
     return (
-        <di>
+        <div>
             <h1>SPLASH PAGE</h1>
-        </di>
+        </div>
     )
 };
 

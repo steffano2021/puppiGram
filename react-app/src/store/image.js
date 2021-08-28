@@ -58,6 +58,53 @@ export const fetchCreateImage = (user_id, image, caption) => async (dispatch) =>
     }
 }
 
+export const fetchEditImage = (user_id, image, caption, method, id) => async (dispatch) => {
+    let response;
+    if (method == 'PUT'){
+        response = await fetch(`/api/images/${id}`, {
+            method: "PUT",
+            headers: { 'Content-Type': "application/json" },
+            body: JSON.stringify({
+            caption
+        })
+    })
+
+    } else { // this is for patch
+        const form = new FormData();
+        // repeat as necessary  for each required form field
+        form.append('user_id', user_id);
+        form.append('caption', caption);
+        form.append('image', image);
+        response = await fetch(`/api/images/${id}`, {
+            method: "PATCH",
+            body: form
+        });
+    }
+
+    const data = await response.json()
+    if (response.ok){
+        dispatch(updateImage(data))
+        return data
+    } else {
+        return data
+    }
+}
+
+
+
+
+export const fetchDeleteImage = (id) => async (dispatch) => {
+    const response= await fetch(`/api/images/${id}`, {
+        method: "DELETE"
+    })
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(deleteImage(id));
+        return data
+    }
+}
+
 
 let initialState = {};
 
