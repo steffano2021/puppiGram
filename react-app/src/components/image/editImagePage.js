@@ -25,6 +25,10 @@ const EditImageForm = () => {
     const p1 = useRef();
     const p2 = useRef();
 
+    if(user_id != thisImg.user_id){
+        history.push('/')
+    }
+
     const openInput = () => {
         imageInput.current.click()
     }
