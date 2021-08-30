@@ -45,12 +45,6 @@ export const fetchCreateImage = (user_id, image, caption) => async (dispatch) =>
     form.append('caption', caption);
     form.append('image', image);
 
-    console.log('below is in the store')
-    console.log(user_id, 'user_id')
-    console.log(caption, 'caption')
-    console.log(image, 'image')
-    console.log(form.getAll('image'), 'form image')
-
     const response = await fetch('/api/images/create', {
         method: "POST",
         body: form
