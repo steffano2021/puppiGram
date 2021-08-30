@@ -18,7 +18,7 @@ def get_images():
 
 
 @image_routes.route('/create', methods=['POST'])
-@login_required
+# @login_required
 def create_image():
     form = ImageCreateForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -42,7 +42,7 @@ def create_image():
 
 
 @image_routes.route('/<int:id>', methods=['GET','PUT', 'PATCH', 'DELETE'])
-@login_required
+# @login_required
 def put_and_del_image(id):
     image = Image.query.filter(Image.id == id).first()
 
