@@ -53,10 +53,7 @@ export const fetchCreateImage = (user_id, image, caption) => async (dispatch) =>
 
     const response = await fetch('/api/images/create', {
         method: "POST",
-        headers: { 'Content-Type': "application/json" },
-        body: JSON.stringify({
-        form
-    })
+        body: form
     });
 
     const data = await response.json()
