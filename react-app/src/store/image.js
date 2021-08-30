@@ -27,7 +27,7 @@ const updateImage = (image) => ({
 
 
 export const fetchAllImages = () => async (dispatch) => {
-    const response = await fetch('/api/images');
+    const response = await fetch('/api/images/');
     if (response.ok) {
         const data = await response.json();
         dispatch(allImages(data));
@@ -44,6 +44,7 @@ export const fetchCreateImage = (user_id, image, caption) => async (dispatch) =>
     form.append('user_id', user_id);
     form.append('caption', caption);
     form.append('image', image);
+
     const response = await fetch('/api/images/create', {
         method: "POST",
         body: form
