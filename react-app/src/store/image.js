@@ -27,7 +27,7 @@ const updateImage = (image) => ({
 
 
 export const fetchAllImages = () => async (dispatch) => {
-    const response = await fetch('/api/images');
+    const response = await fetch('/api/images/');
     if (response.ok) {
         const data = await response.json();
         dispatch(allImages(data));
