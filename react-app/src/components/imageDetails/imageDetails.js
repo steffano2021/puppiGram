@@ -36,7 +36,10 @@ const ImageDetailsPage = () => {
                             comments component goes here
                         </div>
                         <div>
+                            <form>
                             <input type='text' ></input>
+                            <button type='reset'>clear</button>
+                            </form>
                         </div>
                     </div>
                 </div>
