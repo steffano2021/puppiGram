@@ -49,10 +49,14 @@ export const fetchCreateImage = (user_id, image, caption) => async (dispatch) =>
     console.log(user_id, 'user_id')
     console.log(caption, 'caption')
     console.log(image, 'image')
-    console.log(form, 'entire form')
-    const response = await fetch('/api/images/create/', {
+    console.log(form.getAll('image'), 'form image')
+
+    const response = await fetch('/api/images/create', {
         method: "POST",
-        body: form
+        headers: { 'Content-Type': "application/json" },
+        body: JSON.stringify({
+        form
+    })
     });
 
     const data = await response.json()
