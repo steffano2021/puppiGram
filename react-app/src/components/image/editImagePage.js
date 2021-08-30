@@ -26,7 +26,7 @@ const EditImageForm = () => {
     const p2 = useRef();
 
     if(user_id != thisImg.user_id){
-        history.push('/')
+        history.push('/home')
     }
 
     const openInput = () => {
