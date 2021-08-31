@@ -22,8 +22,10 @@ const deleteComment = (id, image_id) => ({
     image_id,
 })
 
-const updateComment = (comment) => ({
+const updateComment = (id, image_id, comment) => ({
     type: UPDATE_COMMENT,
+    id,
+    image_id,
     payload: comment
 })
 
@@ -49,7 +51,6 @@ export const fetchCreateComment = (image_id, user_id, description) => async (dis
     })
     const data = await response.json();
     if (response.ok){
-        console.log(data)
         dispatch(addComment(data))
         return data
     } else {
@@ -65,6 +66,24 @@ export const fetchDeleteComment = (id,image_id) => async (dispatch) => {
     if (response.ok){
         const data = await response.json();
         dispatch(deleteComment(id,image_id));
+        return data
+    }
+}
+
+export const fetchUpdateComment = (id, image_id, description) => async (dispatch) => {
+    const response = await fetch(`/api/comments/${id}`, {
+        method: "PUT",
+        headers: { 'Content-Type': "application/json" },
+        body: JSON.stringify({
+        description
+    })
+    })
+
+    const data = await response.json();
+    if (response.ok){
+        dispatch(updateComment(id,image_id, data))
+        return data
+    } else {
         return data
     }
 }
@@ -90,15 +109,20 @@ export default function reducer(state = initialState, action){
             // console.log('inside reducer')
             // newState = {...state}
             // console.log(newState[1][1] === state[1][1],'testing with rest')
-            newState = _.cloneDeep(state)
+            newState = _.cloneDeep(state);
             // console.log(newState[1][1] === state[1][1],'testing with lodash')
-            newState[action.payload.image_id] = {...newState[action.payload.image_id], [action.payload.id]: action.payload }
+            newState[action.payload.image_id] = {...newState[action.payload.image_id], [action.payload.id]: action.payload };
             return newState;
 
         case DELETE_COMMENT:
-            newState = _.cloneDeep(state)
-            delete newState[action.image_id][action.id]
-            return newState
+            newState = _.cloneDeep(state);
+            delete newState[action.image_id][action.id];
+            return newState;
+
+        case UPDATE_COMMENT:
+            newState = _.cloneDeep(state);
+            newState[action.image_id][action.id] = {...action.payload};
+            return newState;
 
         default:
             return state;
