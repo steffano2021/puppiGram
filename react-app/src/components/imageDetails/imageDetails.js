@@ -16,9 +16,10 @@ const ImageDetailsPage = () => {
     const thisImg = useSelector(state => state.image[id]);
     const user_id = useSelector(state => state.session.user?.id);
     const commentsObj = useSelector(state => state.comment[id]);
+    const image_id = id;
 
     let comments
-    console.log(commentsObj, 'commentsObj')
+    // console.log(commentsObj, 'commentsObj')
     if(commentsObj){
         comments = Object?.values(commentsObj)
     }
@@ -28,7 +29,6 @@ const ImageDetailsPage = () => {
 
     const postComment = async(e) => {
         e.preventDefault()
-        const image_id = id
         console.log(description, 'the comment')
         console.log(user_id, 'user_id')
         console.log(image_id, 'image_id')
@@ -67,7 +67,7 @@ const ImageDetailsPage = () => {
                     <div>
                         <div className='image-column_comments'>
                             {comments?.map(comment => (
-                                <CommentComponent key={comment.id} comment={comment} />
+                                <CommentComponent key={comment.id} comment={comment} image_id={image_id} />
                             ))}
                         </div>
                         <div>

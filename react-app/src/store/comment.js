@@ -16,9 +16,10 @@ const addComment = (comment) => ({
     payload: comment
 })
 
-const deleteComment = (id) => ({
+const deleteComment = (id, image_id) => ({
     type: DELETE_COMMENT,
-    payload: id
+    id,
+    image_id,
 })
 
 const updateComment = (comment) => ({
@@ -56,6 +57,18 @@ export const fetchCreateComment = (image_id, user_id, description) => async (dis
     }
 }
 
+export const fetchDeleteComment = (id,image_id) => async (dispatch) => {
+    const response = await fetch(`/api/comments/${id}`, {
+        method: 'DELETE'
+    })
+
+    if (response.ok){
+        const data = await response.json();
+        dispatch(deleteComment(id,image_id));
+        return data
+    }
+}
+
 
 let initialState = {};
 
@@ -81,6 +94,11 @@ export default function reducer(state = initialState, action){
             // console.log(newState[1][1] === state[1][1],'testing with lodash')
             newState[action.payload.image_id] = {...newState[action.payload.image_id], [action.payload.id]: action.payload }
             return newState;
+
+        case DELETE_COMMENT:
+            newState = _.cloneDeep(state)
+            delete newState[action.image_id][action.id]
+            return newState
 
         default:
             return state;
