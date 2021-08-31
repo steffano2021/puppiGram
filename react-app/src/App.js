@@ -11,12 +11,14 @@ import User from './components/User';
 // redux store
 import { authenticate } from './store/session';
 import { fetchAllImages } from './store/image';
+import { fetchAllComments } from './store/comment';
 
 // component pages
 import HomePage from './components/home/homePage';
 import ImagePostForm from './components/image/postImagePage';
 import SplashPage from './components/splash/splashPage';
 import EditImageForm from './components/image/editImagePage';
+import ImageDetailsPage from './components/imageDetails/imageDetails';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -26,6 +28,7 @@ function App() {
     (async() => {
       await dispatch(authenticate());
       await dispatch(fetchAllImages());
+      await dispatch(fetchAllComments());
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -51,14 +54,18 @@ function App() {
         <Route path='/signup' exact={true}>
           <SignUpForm />
         </Route>
-        <Route path='/images/create' exact={true}>
+        <ProtectedRoute path='/images/create' exact={true}>
           <NavBar />
           <ImagePostForm />
-        </Route>
-        <Route path='/images/edit/:id' exact={true}>
+        </ProtectedRoute>
+        <ProtectedRoute path='/images/edit/:id' exact={true}>
           <NavBar />
           <EditImageForm />
-        </Route>
+        </ProtectedRoute>
+        <ProtectedRoute path='/images/details/:id' exact={true}>
+          <NavBar />
+          <ImageDetailsPage />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

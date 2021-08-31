@@ -18,7 +18,7 @@ function HomePage() {
             <div className='imagesList_container'>
             {images.map(image => (
                 <div key={image.id} className='image_container'>
-                <NavLink to={`/images/edit/${image.id}`} >
+                <NavLink to={`/images/details/${image.id}`} >
                     <img className='image_image' src={image.image} alt={image.id} />
                     <div className='image_caption'>
                     {/* {image.id} */}

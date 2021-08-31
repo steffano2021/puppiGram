@@ -16,8 +16,10 @@ const LoginForm = () => {
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
+    console.log(data)
     if (data) {
       setErrors(data);
+      console.log(errors)
     }
   };
 
@@ -48,6 +50,7 @@ const LoginForm = () => {
             <div>Log in to your account</div>
         </div>
         <div className='auth-form-input_container'>
+          <span className='error-login_email'>{errors?.email}</span>
           <i class="fas fa-envelope" />
           <input
           name='email'
@@ -58,6 +61,7 @@ const LoginForm = () => {
           />
         </div>
         <div className='auth-form-input_container'>
+          <span className='error-login_password'>{errors?.password}</span>
           <i class="fas fa-key" />
           <input
           name='password'
