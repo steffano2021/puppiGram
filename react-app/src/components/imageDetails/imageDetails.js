@@ -1,19 +1,48 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-// import { fetchCreateImage } from '../../store/image';
+import { fetchCreateComment } from '../../store/comment';
 import './imageDetails.css'
 
+import CommentComponent from './commentComponent';
 
 const ImageDetailsPage = () => {
 
     const history = useHistory();
     const dispatch = useDispatch();
-    let { id } = useParams();
+    let { id } = useParams(); //this the image id
 
 
     const thisImg = useSelector(state => state.image[id]);
     const user_id = useSelector(state => state.session.user?.id);
+    const commentsObj = useSelector(state => state.comment[id]);
+
+    let comments
+    console.log(commentsObj, 'commentsObj')
+    if(commentsObj){
+        comments = Object?.values(commentsObj)
+    }
+
+    const [errors, setErrors] = useState([]);
+    const [description, setDescription] = useState('')
+
+    const postComment = async(e) => {
+        e.preventDefault()
+        const image_id = id
+        console.log(description, 'the comment')
+        console.log(user_id, 'user_id')
+        console.log(image_id, 'image_id')
+        const data = await dispatch(fetchCreateComment(image_id, user_id, description))
+        if (data.errors){
+            console.log(data)
+            setErrors(data.errors)
+            console.log(errors, 'errors')
+            return
+        } else {
+            // history.push('/home')
+            setDescription('')
+        }
+    }
 
     return (
         <div className='imageDetails_page'>
@@ -33,11 +62,14 @@ const ImageDetailsPage = () => {
                     </div>
                     <div>
                         <div className='image-column_comments'>
-                            comments component goes here
+                            {comments?.map(comment => (
+                                <CommentComponent key={comment.id} comment={comment} />
+                            ))}
                         </div>
                         <div>
-                            <form>
-                            <input type='text' ></input>
+                            <form onSubmit={postComment}>
+                            <textarea placeholder='Enter a comment' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                            <button type='submit'>post</button>
                             <button type='reset'>clear</button>
                             </form>
                         </div>

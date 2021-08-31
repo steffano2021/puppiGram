@@ -31,6 +31,7 @@ def create_comment():
         db.session.commit()
         return new_comment.to_dict()
     else:
+        print(form.errors)
         return {'errors': form.errors}, 500
 
 
