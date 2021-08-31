@@ -10,7 +10,7 @@ class Image(db.Model):
     created_at = db.Column(db.Date , nullable=False)
     updated_at = db.Column(db.Date , nullable=False)
 
-    comments = db.relationship("Comment", backref=db.backref("images"), lazy=True )
+    comments = db.relationship("Comment", backref=db.backref("images"), lazy=True, cascade="all, delete")
     users = db.relationship("User", secondary='likes', backref=db.backref("images"), lazy=True)
 
     def to_dict(self):
