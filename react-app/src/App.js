@@ -11,6 +11,7 @@ import User from './components/User';
 // redux store
 import { authenticate } from './store/session';
 import { fetchAllImages } from './store/image';
+import { fetchAllComments } from './store/comment';
 
 // component pages
 import HomePage from './components/home/homePage';
@@ -27,6 +28,7 @@ function App() {
     (async() => {
       await dispatch(authenticate());
       await dispatch(fetchAllImages());
+      await dispatch(fetchAllComments());
       setLoaded(true);
     })();
   }, [dispatch]);
