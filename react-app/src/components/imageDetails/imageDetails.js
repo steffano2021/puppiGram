@@ -44,6 +44,10 @@ const ImageDetailsPage = () => {
         }
     }
 
+    const clearTextArea = () => {
+        setDescription('')
+    }
+
     return (
         <div className='imageDetails_page'>
             <div className='details_container'>
@@ -70,7 +74,7 @@ const ImageDetailsPage = () => {
                             <form onSubmit={postComment}>
                             <textarea placeholder='Enter a comment' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                             <button type='submit'>post</button>
-                            <button type='reset'>clear</button>
+                            <button type='reset' onClick={clearTextArea} >clear</button>
                             </form>
                         </div>
                     </div>
