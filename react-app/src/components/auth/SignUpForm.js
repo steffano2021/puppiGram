@@ -23,7 +23,10 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
+    } else {
+      setErrors({passMatch: 'Passwords do not match.'})
     }
+    console.log(errors)
   };
 
   const updateUsername = (e) => {
@@ -56,11 +59,12 @@ const SignUpForm = () => {
       </div>
       <div className='auth_form_container'>
         <form onSubmit={onSignUp} className='auth-form'>
-          <div className='auth-form-logo'>
+          <div className='auth-form-logo_signup'>
             <div>puppiGram</div>
             <div>Sign up to your account</div>
           </div>
           <div className='auth-form-input_container'>
+          <span className='error-login'>{errors?.username}</span>
               <i class="fas fa-user" />
               <input
               type='text'
@@ -71,6 +75,7 @@ const SignUpForm = () => {
               ></input>
           </div>
           <div className='auth-form-input_container'>
+          <span className='error-login'>{errors?.email}</span>
             <i class="fas fa-envelope" />
             <input
               type='text'
@@ -91,6 +96,7 @@ const SignUpForm = () => {
               ></input>
           </div>
           <div className='auth-form-input_container'>
+          <span className='error-login'>{errors?.passMatch}</span>
           <i class="fas fa-key" />
             <input
               type='password'

@@ -16,7 +16,6 @@ const LoginForm = () => {
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
-    console.log(data)
     if (data) {
       setErrors(data);
       console.log(errors)
@@ -30,6 +29,10 @@ const LoginForm = () => {
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
+
+  const demoLogin = async() => {
+    const data = await dispatch(login('demo@aa.io', 'password'));
+  }
 
   if (user) {
     return <Redirect to='/home' />;
@@ -45,12 +48,12 @@ const LoginForm = () => {
       </div>
       <div className='auth_form_container'>
       <form onSubmit={onLogin}>
-        <div className='auth-form-logo'>
+        <div className='auth-form-logo_login'>
             <div>puppiGram</div>
             <div>Log in to your account</div>
         </div>
         <div className='auth-form-input_container'>
-          <span className='error-login_email'>{errors?.email}</span>
+          <span className='error-login'>{errors?.email}</span>
           <i class="fas fa-envelope" />
           <input
           name='email'
@@ -61,7 +64,7 @@ const LoginForm = () => {
           />
         </div>
         <div className='auth-form-input_container'>
-          <span className='error-login_password'>{errors?.password}</span>
+          <span className='error-login'>{errors?.password}</span>
           <i class="fas fa-key" />
           <input
           name='password'
@@ -75,6 +78,9 @@ const LoginForm = () => {
           <button type='submit'>Login</button>
           <button type='button' onClick={() => history.push('/signup')} >Sign up</button>
           <button type='button' onClick={() => history.push('/')} >Cancel</button>
+        </div>
+        <div className='demo-btn_container'>
+          <button type='button' onClick={demoLogin} >Demo user</button>
         </div>
       </form>
     </div>
