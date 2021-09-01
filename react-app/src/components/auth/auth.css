@@ -126,8 +126,8 @@
 .error-login{
     position: absolute;
     top: -23px;
-    left: 0px;
-    width: 230px;
+    left: -25px;
+    width: 280px;
     color: red;
     text-align: center;
 }

@@ -24,9 +24,8 @@ const SignUpForm = () => {
         setErrors(data)
       }
     } else {
-      setErrors({passMatch: 'Passwords do not match.'})
+      setErrors({passMatch:'Passwords do not match.'})
     }
-    console.log(errors)
   };
 
   const updateUsername = (e) => {
@@ -86,6 +85,7 @@ const SignUpForm = () => {
               ></input>
           </div>
           <div className='auth-form-input_container'>
+          <span className='error-login'>{errors?.password}</span>
           <i class="fas fa-key" />
             <input
               type='password'
@@ -103,7 +103,6 @@ const SignUpForm = () => {
               name='repeat_password'
               onChange={updateRepeatPassword}
               value={repeatPassword}
-              required={true}
               placeholder='confirm password'
               ></input>
           </div>
