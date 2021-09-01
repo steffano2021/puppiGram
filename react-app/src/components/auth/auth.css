@@ -1,10 +1,5 @@
 
-/* nav{
-    display: none;
-} */
-
 .auth_background{
-    /* background-color: rgba(46, 108, 224, 0.63); */
     background: linear-gradient(90deg, rgba(214, 233, 251, 0.845) 0%, rgba(130, 195, 251, 0.743)100%);
     width: 100vw;
     height: 100vh;
@@ -17,7 +12,6 @@
     display: flex;
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
     position: relative;
-    /* border-style: solid; */
 }
 
 .auth-photo{
@@ -41,8 +35,7 @@
     align-items: center;
 }
 
-.auth-form-logo{
-    /* border-style: solid; */
+.auth-form-logo_login{
     width: auto;
     height: 60px;
     display: flex;
@@ -51,6 +44,16 @@
     align-items: center;
     font-weight: bold;
     margin-bottom: 10px;
+}
+
+.auth-form-logo_signup{
+    width: auto;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
 }
 
 .auth-form{
@@ -65,9 +68,8 @@
     width: 180px;
     height: 30px;
     border-radius: 14px;
-    margin-top: 15px;
     padding-left: 50px;
-    margin-top: 30px;
+    margin-top: 25px;
 }
 
 
@@ -97,12 +99,17 @@
     flex-direction: column;
     justify-content: space-around;
     height: 140px;
-    /* border-style: solid; */
     align-items: center;
 }
 
+.demo-btn_container{
+    display: flex;
+    justify-content: center;
+    padding-top: 7px;
+}
 
-.auth-form-btn_container button{
+.auth-form-btn_container button,
+.demo-btn_container button{
     background: linear-gradient(90deg, rgba(66, 157, 243, 0.845) 0%, rgba(130, 195, 251, 0.743)100%);
     color: #fff;
     padding: 5px;
@@ -111,23 +118,16 @@
     border: none;
 }
 
-.auth-form-btn_container button:hover {
+.auth-form-btn_container button:hover,
+.demo-btn_container button:hover {
     background-color: rgb(34, 44, 133);
 }
 
-.error-login_email{
+.error-login{
     position: absolute;
-    top: -25px;
+    top: -23px;
+    left: -25px;
+    width: 280px;
     color: red;
-    /* width: 200px; */
-    /* left: 0px; */
     text-align: center;
-    width:fit-content;
-}
-
-.error-login_password{
-    color: red;
-    top: -25px;
-    position: absolute;
-    width: auto;
 }

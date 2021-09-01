@@ -17,10 +17,12 @@ const CommentComponent = ({comment, image_id}) => {
     const [editMode, setEditMode] = useState(false);
 
     const deleteComment = () => {
+        if (user_id != comment.user_id) return
         dispatch(fetchDeleteComment(comment.id,image_id));
     }
 
     const updateComment = async() => {
+        if (user_id != comment.user_id) return
         const data = await dispatch(fetchUpdateComment(comment.id,image_id,description));
         if (data.errors){
             setErrors(data.errors)
@@ -42,6 +44,7 @@ const CommentComponent = ({comment, image_id}) => {
             </div>}
             <div>{comment.created_at}</div>
             </div>
+            {user_id == comment.user_id ?
             <div>
             {!editMode ? <>
                 <button onClick={()=>setEditMode(true)}>edit</button>
@@ -53,6 +56,7 @@ const CommentComponent = ({comment, image_id}) => {
             </>
             }
             </div>
+            : null}
         </div>
     )
 }

@@ -62,7 +62,7 @@ const ImageDetailsPage = () => {
                     </div>
                     : null}
                     <div className='image-column_quantity' >
-                        <div>likes and comments amount</div>
+                        <div>likes and {comments.length} comments</div>
                     </div>
                     <div>
                         <div className='image-column_comments'>
