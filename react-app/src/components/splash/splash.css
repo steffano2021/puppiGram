@@ -74,3 +74,7 @@
     border-radius: 10px;
     border: none;
 }
+
+.splash-page_join button:hover{
+    background-color: rgb(34, 44, 133);
+}
