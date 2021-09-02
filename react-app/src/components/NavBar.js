@@ -16,11 +16,13 @@ const NavBar = () => {
         <div className = 'nav_left'>
           { user ?
           <NavLink to='/home' exact={true} activeClassName='active'>
-            Logo Here
+            <img className='nav_logo' src='https://i.imgur.com/mULrUwK.png' alt='' />
+            puppiGram
           </NavLink>
           :
           <NavLink to='/' exact={true} activeClassName='active'>
-            Logo Here
+            <img className='nav_logo' src='https://i.imgur.com/mULrUwK.png' alt='' />
+            puppiGram
           </NavLink>
           }
         </div>
@@ -39,12 +41,12 @@ const NavBar = () => {
               </>
               : <>
               <div>
-                <LogoutButton />
+                <NavLink to='/images/create' exact={true} activeClassName='active' >
+                  Post
+                </NavLink>
               </div>
               <div>
-                <NavLink to='/images/create' exact={true} activeClassName='active' >
-                  post
-                </NavLink>
+                <LogoutButton />
               </div>
               </>
           }
