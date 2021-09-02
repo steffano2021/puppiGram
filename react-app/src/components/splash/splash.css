@@ -2,9 +2,8 @@
 
 .splash_page{
     width: 100%;
-    height: 90.7vh;
+    height: 90vh;
     background-image: url(https://i.imgur.com/2zY0XMl.jpg);
-    /* filter: blur(2px); */
     opacity: 90%;
     display: flex;
     justify-content: center;
@@ -14,7 +13,7 @@
 .splash-page_container{
     position: relative;
     background-color: #f1faee;
-    width: 80%;
+    width: 90%;
     height: 80%;
     display: flex;
     align-items: center;
@@ -24,7 +23,7 @@
 .splash-page_header{
     position: absolute;
     left: 40px;
-    top: 30px;
+    top: 20px;
     font-family: 'Kaisei HarunoUmi', serif;
 }
 
@@ -34,7 +33,6 @@
     width: 960px;
     display: flex;
     justify-content: space-around;
-    /* border-style: dotted; */
 }
 
 /* individual image */
@@ -56,9 +54,23 @@
 .splash-page-info_column{
     width: 200px;
     font-family: 'Kaisei HarunoUmi', serif;
-    margin-left: 30px;
 }
 
 .splash-page_join{
     width: 50px;
+    font-family: 'Kaisei HarunoUmi', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 70px;
+    justify-content: space-around;
+}
+
+.splash-page_join button{
+    background: linear-gradient(90deg, rgba(66, 157, 243, 0.845) 0%, rgba(130, 195, 251, 0.743)100%);
+    color: #fff;
+    padding: 5px;
+    width: 80px;
+    border-radius: 10px;
+    border: none;
 }
