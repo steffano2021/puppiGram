@@ -1,6 +1,6 @@
 
 .nav_container{
-    background-color: #568ad370;
+    background-color: #bdd4f5;
     width: 100%;
     height: 60px;
     display: flex;
@@ -8,17 +8,18 @@
     align-items: flex-end;
     padding-bottom: 10px;
     font-family: 'Kaisei HarunoUmi', serif;
+    font-size: 18px;
 }
 
-/* makes all a-links white */
+/* makes all a-links black */
 .nav_container a{
-    color: whitesmoke;
+    color: black;
 }
 
 .nav_left{
     margin-left: 30px;
     height: 50px;
-    width: 150px;
+    width: 140px;
 }
 
 /* the logo and site name because they're inside a NavLink */
@@ -35,10 +36,9 @@
 
 .nav_right{
     display: flex;
-    width: 150px;
+    width: 140px;
     height: 50px;
     justify-content: space-between;
     align-items: center;
     margin-right: 30px;
-    font-size: 18px;
 }

@@ -19,6 +19,7 @@ import ImagePostForm from './components/image/postImagePage';
 import SplashPage from './components/splash/splashPage';
 import EditImageForm from './components/image/editImagePage';
 import ImageDetailsPage from './components/imageDetails/imageDetails';
+import Footer from './components/footer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,6 +40,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    <Footer />
       <Switch>
         <Route path='/' exact={true} >
           <NavBar />

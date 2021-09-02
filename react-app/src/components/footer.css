@@ -1,0 +1,28 @@
+
+
+.footer_page{
+    position: fixed;
+    width: 100vw;
+    height: 50px;
+    background-color: #bdd4f5;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer_container{
+    display: flex;
+    justify-content: space-between;
+    width: 80px;
+}
+
+.footer_page a{
+    color: black;
+    height: 30px;
+}
+
+.footer_page i{
+    font-size: 34px;
+    margin-bottom: 50px;
+}
