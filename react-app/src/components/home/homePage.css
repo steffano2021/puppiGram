@@ -8,6 +8,11 @@
     padding-left: 25px;
 }
 
+.imagesList_container{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 .image_container{
     border: thick double #457b9d;
     margin-top: 100px;
