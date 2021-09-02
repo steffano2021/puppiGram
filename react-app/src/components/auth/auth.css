@@ -131,3 +131,11 @@
     color: red;
     text-align: center;
 }
+
+.logout-btn{
+    border: none;
+    color: whitesmoke;
+    background-color: #568ad300;
+    font-family: 'Kaisei HarunoUmi', serif;
+    font-size: 16px;
+}
