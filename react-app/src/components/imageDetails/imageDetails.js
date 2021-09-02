@@ -18,7 +18,7 @@ const ImageDetailsPage = () => {
     const commentsObj = useSelector(state => state.comment[id]);
     const image_id = id;
 
-    let comments
+    let comments = [];
     // console.log(commentsObj, 'commentsObj')
     if(commentsObj){
         comments = Object?.values(commentsObj)
@@ -29,17 +29,12 @@ const ImageDetailsPage = () => {
 
     const postComment = async(e) => {
         e.preventDefault()
-        console.log(description, 'the comment')
-        console.log(user_id, 'user_id')
-        console.log(image_id, 'image_id')
         const data = await dispatch(fetchCreateComment(image_id, user_id, description))
         if (data.errors){
-            console.log(data)
             setErrors(data.errors)
-            console.log(errors, 'errors')
+            console.log(errors, 'errors in the spot details')
             return
         } else {
-            // history.push('/home')
             setDescription('')
         }
     }
@@ -62,7 +57,7 @@ const ImageDetailsPage = () => {
                     </div>
                     : null}
                     <div className='image-column_quantity' >
-                        <div>likes and {comments.length} comments</div>
+                        <div>likes and {comments?.length} comments</div>
                     </div>
                     <div>
                         <div className='image-column_comments'>
