@@ -12,9 +12,6 @@ const SplashPage = () => {
     const images = Object.values( useSelector(state => state.image));
     const three_images = images.slice(images.length-3);
 
-    console.log(images)
-    console.log(three_images)
-
     if (user) {
         return <Redirect to='/home' />;
     }
