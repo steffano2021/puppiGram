@@ -58,8 +58,7 @@
 }
 
 .image-column_comment-list{
-    border: .5px solid rgba(128, 128, 128, 0.452);
-    border-radius: 8px;
+    /* border: .5px solid rgba(128, 128, 128, 0.452); */
+    /* border-radius: 8px; */
     width: 350px;
-    /* padding: 5px; */
 }

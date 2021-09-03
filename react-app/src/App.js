@@ -40,15 +40,16 @@ function App() {
 
   return (
     <BrowserRouter>
-    <Footer />
       <Switch>
         <Route path='/' exact={true} >
           <NavBar />
           <SplashPage />
+          <Footer />
         </Route>
         <ProtectedRoute path='/home' exact={true} >
           <NavBar />
           <HomePage />
+          <Footer />
         </ProtectedRoute>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -59,14 +60,17 @@ function App() {
         <ProtectedRoute path='/images/create' exact={true}>
           <NavBar />
           <ImagePostForm />
+          <Footer />
         </ProtectedRoute>
         <ProtectedRoute path='/images/edit/:id' exact={true}>
           <NavBar />
           <EditImageForm />
+          <Footer />
         </ProtectedRoute>
         <ProtectedRoute path='/images/details/:id' exact={true}>
           <NavBar />
           <ImageDetailsPage />
+          <Footer />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
