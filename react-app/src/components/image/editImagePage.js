@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { fetchDeleteImage, fetchEditImage } from '../../store/image';
-// import './postImage.css'
 
 const EditImageForm = () => {
 
@@ -93,9 +92,6 @@ const EditImageForm = () => {
 
     const submitImage = async (e) => {
         e.preventDefault();
-        console.log(image, 'this the image useState')
-        console.log(caption, 'this the caption useState')
-        console.log(thisImg.image, 'this the og image')
 
         let data;
         if (!image){
@@ -108,7 +104,6 @@ const EditImageForm = () => {
 
         if (data.errors){
             setErrors(data.errors)
-            console.log(errors)
             return
         } else {
             history.push('/home')

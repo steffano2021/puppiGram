@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import './homePage.css'
 
 
@@ -8,7 +8,6 @@ function HomePage() {
 
     const user = useSelector(state => state.session.user);
     const images = Object.values( useSelector(state => state.image) );
-    // console.log(images)
 
     return (
         <div className='homePage_container'>
@@ -21,9 +20,8 @@ function HomePage() {
                 <NavLink to={`/images/details/${image.id}`} >
                     <img className='image_image' src={image.image} alt={image.id} />
                     <div className='image_caption'>
-                    {/* {image.id} */}
-                    {image.caption}
-                    {image.created_at}
+                    <p>{image.caption}</p>
+                    <p>{image.created_at}</p>
                     </div>
                 </NavLink>
                 </div>
