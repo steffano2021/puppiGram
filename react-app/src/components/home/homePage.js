@@ -21,7 +21,7 @@ function HomePage() {
                     <img className='image_image' src={image.image} alt={image.id} />
                     <div className='image_caption'>
                     <p>{image.caption}</p>
-                    <p>{image.created_at}</p>
+                    <p>{image.created_at.slice(4,16)}</p>
                     </div>
                 </NavLink>
                 </div>
