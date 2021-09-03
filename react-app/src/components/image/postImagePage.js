@@ -82,11 +82,9 @@ const ImagePostForm = () => {
 
     const submitImage = async (e) => {
         e.preventDefault();
-        // console.log(image, 'image sending to backend')
         const data = await dispatch(fetchCreateImage(user_id, image, caption))
         if (data.errors){
             setErrors(data.errors)
-            console.log(errors)
             return
         } else {
             history.push('/home')
