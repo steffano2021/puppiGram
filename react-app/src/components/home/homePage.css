@@ -5,7 +5,6 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding-left: 25px;
 }
 
 .imagesList_container{

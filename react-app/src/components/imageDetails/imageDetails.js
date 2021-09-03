@@ -50,17 +50,16 @@ const ImageDetailsPage = () => {
                     <div>
                         <img className='image-column_image' src={thisImg.image} alt='user-image' />
                     </div>
-                    {user_id == thisImg.user_id ?
-                    <div className='image-column_buttons'>
-                        <button onClick={()=> history.push(`/images/edit/${id}`)} >edit</button>
-                        <button  >delete</button>
+                    <div className='image-column_qty-btn' >
+                        <div>0 likes and {comments?.length} comments</div>
+                        {user_id == thisImg.user_id ?
+                        <div className='image-column_buttons'>
+                            <button onClick={()=> history.push(`/images/edit/${id}`)} ><i class="far fa-edit"></i></button>
+                            <button  ><i class="far fa-trash-alt"></i></button>
+                        </div> : null}
                     </div>
-                    : null}
-                    <div className='image-column_quantity' >
-                        <div>likes and {comments?.length} comments</div>
-                    </div>
-                    <div>
-                        <div className='image-column_comments'>
+                    <div className='image-column_comment' >
+                        <div className='image-column_comment-list'>
                             {comments?.map(comment => (
                                 <CommentComponent key={comment.id} comment={comment} image_id={image_id} />
                             ))}
