@@ -12,6 +12,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import { fetchAllImages } from './store/image';
 import { fetchAllComments } from './store/comment';
+import { fetchAllNames } from './store/usernames';
 
 // component pages
 import HomePage from './components/home/homePage';
@@ -30,6 +31,7 @@ function App() {
       await dispatch(authenticate());
       await dispatch(fetchAllImages());
       await dispatch(fetchAllComments());
+      await dispatch(fetchAllNames());
       setLoaded(true);
     })();
   }, [dispatch]);

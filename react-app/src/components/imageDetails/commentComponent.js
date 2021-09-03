@@ -9,6 +9,7 @@ const CommentComponent = ({comment, image_id}) => {
     const dispatch = useDispatch();
 
     const user_id = useSelector(state => state.session.user?.id);
+    const names = useSelector(state => state.usernames);
 
     const [description, setDescription] = useState(comment.description);
     const [errors, setErrors] = useState([]);
@@ -24,7 +25,6 @@ const CommentComponent = ({comment, image_id}) => {
         const data = await dispatch(fetchUpdateComment(comment.id,image_id,description));
         if (data.errors){
             setErrors(data.errors)
-            console.log(errors)
             return
         } else {
             setEditMode(false)
@@ -40,7 +40,7 @@ const CommentComponent = ({comment, image_id}) => {
     return (
         <div className='comment_container'>
                 <div className='comment_top'>
-                    {comment.user_id} this is the user's id
+                    {names[comment.user_id].username}
                 </div>
                 {!editMode ?
                 <div className='comment_middle'>
