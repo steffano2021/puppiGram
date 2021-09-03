@@ -8,4 +8,4 @@ from app.models import Image
 class CommentCreateForm(FlaskForm):
     user_id = IntegerField()
     image_id = IntegerField()
-    description = TextAreaField('description', validators=[Length(min=1, max=100, message="Comment must be between 1 and %(max)d characters")])
+    description = TextAreaField('description', validators=[Length(min=1, max=100, message="Comment must be between 1 and %(max)d chars")])

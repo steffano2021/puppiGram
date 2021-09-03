@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import { fetchDeleteImage } from '../../store/image';
 import { fetchCreateComment } from '../../store/comment';
 import './imageDetails.css'
 
@@ -39,6 +40,12 @@ const ImageDetailsPage = () => {
         }
     }
 
+    const deleteImg = () => {
+        if(user_id != thisImg.user_id) return
+        dispatch(fetchDeleteImage(image_id))
+        history.push('/home')
+    }
+
     const clearTextArea = () => {
         setDescription('')
     }
@@ -55,7 +62,7 @@ const ImageDetailsPage = () => {
                         {user_id == thisImg.user_id ?
                         <div className='image-column_buttons'>
                             <button onClick={()=> history.push(`/images/edit/${id}`)} ><i class="far fa-edit"></i></button>
-                            <button  ><i class="far fa-trash-alt"></i></button>
+                            <button onClick={deleteImg} ><i class="far fa-trash-alt"></i></button>
                         </div> : null}
                     </div>
                     <div className='image-column_comment' >
@@ -65,11 +72,14 @@ const ImageDetailsPage = () => {
                             ))}
                         </div>
                         <div>
-                            <form onSubmit={postComment}>
-                            <textarea placeholder='Enter a comment' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
-                            <button type='submit'>post</button>
-                            <button type='reset' onClick={clearTextArea} >clear</button>
+                            <form className='image-column_form' onSubmit={postComment}>
+                            <textarea className='image-column_textarea' placeholder='Enter a comment' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                            <div className='image-column_form-btns'>
+                            <button type='submit'><i class="far fa-paper-plane"></i></button>
+                            <button type='reset' onClick={clearTextArea} ><i class="fas fa-broom"></i></button>
+                            </div>
                             </form>
+                            <div className='image-column_error' >{errors?.description}</div>
                         </div>
                     </div>
                 </div>

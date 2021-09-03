@@ -1,16 +1,19 @@
 
 .imageDetails_page{
     width: 100%;
-    height: 90vh;
+    min-height: 90vh;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: flex-start;
 }
 
 .details_container{
-    margin-top: 15px;
+    margin-top: 25px;
+    margin-bottom: 45px;
     display: flex;
     width: 700px;
+    height: auto;
 }
 
 .image-column{
@@ -53,13 +56,49 @@
     cursor: pointer;
 }
 
+/* comment-list and the textArea */
 .image-column_comment{
-    /* border-style: dotted; */
+    height: auto;
 }
 
+/* only the comment list */
 .image-column_comment-list{
-    border: .5px solid rgba(128, 128, 128, 0.452);
-    border-radius: 8px;
-    width: 350px;
-    /* padding: 5px; */
+    width: auto;
+    max-height: 315px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 10px;
+}
+
+.image-column_form{
+    /* border-style: dotted; */
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.image-column_textarea{
+    resize: none;
+    border-radius: 4px;
+    width: 300px;
+    height: 60px;
+    background-color: whitesmoke;
+}
+
+.image-column_form-btns{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 70px;
+}
+
+.image-column_form-btns button{
+    border: none;
+    background-color: transparent;
+}
+
+.image-column_error{
+    color: red;
+    font-size: 10px;
+    margin-left: 50px;
 }

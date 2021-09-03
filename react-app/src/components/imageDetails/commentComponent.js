@@ -31,29 +31,36 @@ const CommentComponent = ({comment, image_id}) => {
         }
     }
 
+    const closeWindow = () => {
+        setEditMode(false);
+        setDescription(comment.description);
+        setErrors([]);
+    }
+
     return (
         <div className='comment_container'>
-                <div>
+                <div className='comment_top'>
                     {comment.user_id} this is the user's id
                 </div>
                 {!editMode ?
-                <div>
+                <div className='comment_middle'>
                     {comment.description}
                 </div>
-                :<div>
-                    <textarea value={description} onChange={(e) => setDescription(e.target.value)} ></textarea>
+                :<div className='comment_middle'>
+                    <textarea maxLength='100' className='comment-middle_textarea' value={description} onChange={(e) => setDescription(e.target.value)} ></textarea>
                 </div>}
-                <div>
-                    <div>{comment.created_at}</div>
+                <div className='comment_bottom'>
+                    <div className='comment_date'>{comment.created_at.slice(4,16)}</div>
+                    <div className='comment_error' >{errors?.description}</div>
                 {user_id == comment.user_id ?
-                <div>
+                <div className='comment-bottom_buttons'>
                 {!editMode ? <>
                     <button onClick={()=>setEditMode(true)}><i class="far fa-edit"></i></button>
                     <button onClick={deleteComment}><i class="far fa-trash-alt"></i></button>
                     </>
                 :<>
-                    <button onClick={updateComment}>update</button>
-                    <button onClick={()=>setEditMode(false)}>cancel</button>
+                    <button onClick={updateComment}><i class="far fa-paper-plane"></i></button>
+                    <button onClick={closeWindow}><i class="far fa-window-close"></i></button>
                 </>
                 }
                 </div>
