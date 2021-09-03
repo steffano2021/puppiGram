@@ -65,11 +65,14 @@ const ImageDetailsPage = () => {
                             ))}
                         </div>
                         <div>
-                            <form onSubmit={postComment}>
-                            <textarea placeholder='Enter a comment' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
-                            <button type='submit'>post</button>
-                            <button type='reset' onClick={clearTextArea} >clear</button>
+                            <form className='image-column_form' onSubmit={postComment}>
+                            <textarea className='image-column_textarea' placeholder='Enter a comment' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                            <div className='image-column_form-btns'>
+                            <button type='submit'><i class="far fa-paper-plane"></i></button>
+                            <button type='reset' onClick={clearTextArea} ><i class="fas fa-broom"></i></button>
+                            </div>
                             </form>
+                            <div className='image-column_error' >{errors?.description}</div>
                         </div>
                     </div>
                 </div>
