@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useHistory, useParams } from 'react-router-dom';
-
 import { fetchDeleteComment, fetchUpdateComment } from '../../store/comment';
-
+import './commentComp.css'
 
 
 const CommentComponent = ({comment, image_id}) => {
@@ -35,29 +33,33 @@ const CommentComponent = ({comment, image_id}) => {
 
     return (
         <div className='comment_container'>
-            <div className='comment_to-center'>
-            <div>{comment.user_id} this is the user's id</div>
-            {!editMode ?
-            <div>{comment.description}</div>
-            :<div>
-                <textarea value={description} onChange={(e) => setDescription(e.target.value)} ></textarea>
-            </div>}
-            <div>{comment.created_at}</div>
-            </div>
-            {user_id == comment.user_id ?
-            <div>
-            {!editMode ? <>
-                <button onClick={()=>setEditMode(true)}>edit</button>
-                <button onClick={deleteComment}>delete</button>
+                <div>
+                    {comment.user_id} this is the user's id
+                </div>
+                {!editMode ?
+                <div>
+                    {comment.description}
+                </div>
+                :<div>
+                    <textarea value={description} onChange={(e) => setDescription(e.target.value)} ></textarea>
+                </div>}
+                <div>
+                    <div>{comment.created_at}</div>
+                {user_id == comment.user_id ?
+                <div>
+                {!editMode ? <>
+                    <button onClick={()=>setEditMode(true)}><i class="far fa-edit"></i></button>
+                    <button onClick={deleteComment}><i class="far fa-trash-alt"></i></button>
+                    </>
+                :<>
+                    <button onClick={updateComment}>update</button>
+                    <button onClick={()=>setEditMode(false)}>cancel</button>
                 </>
-            :<>
-                <button onClick={updateComment}>update</button>
-                <button onClick={()=>setEditMode(false)}>cancel</button>
-            </>
-            }
+                }
+                </div>
+                : null}
+                </div>
             </div>
-            : null}
-        </div>
     )
 }
 
