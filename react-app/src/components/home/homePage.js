@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import './homePage.css'
 
+import { fetchAllNames } from '../../store/usernames';
 
 function HomePage() {
 
+    const dispatch = useDispatch();
+
     const user = useSelector(state => state.session.user);
-    const images = Object.values( useSelector(state => state.image) );
+    const images = Object.values( useSelector(state => state.image));
+
+    useEffect(() => {
+        (async() => {
+            await dispatch(fetchAllNames());
+          })();
+    }, [dispatch])
 
     return (
         <div className='homePage_container'>
