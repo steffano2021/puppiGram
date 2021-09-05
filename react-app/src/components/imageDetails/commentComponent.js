@@ -55,12 +55,12 @@ const CommentComponent = ({comment, image_id}) => {
                 {user_id == comment.user_id ?
                 <div className='comment-bottom_buttons'>
                 {!editMode ? <>
-                    <button onClick={()=>setEditMode(true)}><i class="far fa-edit"></i></button>
-                    <button onClick={deleteComment}><i class="far fa-trash-alt"></i></button>
+                    <button onClick={()=>setEditMode(true)}><i className="far fa-edit"></i></button>
+                    <button onClick={deleteComment}><i className="far fa-trash-alt"></i></button>
                     </>
                 :<>
-                    <button onClick={updateComment}><i class="far fa-paper-plane"></i></button>
-                    <button onClick={closeWindow}><i class="far fa-window-close"></i></button>
+                    <button onClick={updateComment}><i className="far fa-paper-plane"></i></button>
+                    <button onClick={closeWindow}><i className="far fa-window-close"></i></button>
                 </>
                 }
                 </div>

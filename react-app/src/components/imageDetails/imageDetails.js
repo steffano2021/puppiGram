@@ -33,7 +33,6 @@ const ImageDetailsPage = () => {
         const data = await dispatch(fetchCreateComment(image_id, user_id, description))
         if (data.errors){
             setErrors(data.errors)
-            console.log(errors, 'errors in the spot details')
             return
         } else {
             setDescription('')
@@ -61,8 +60,8 @@ const ImageDetailsPage = () => {
                         <div>0 likes and {comments?.length} comments</div>
                         {user_id == thisImg.user_id ?
                         <div className='image-column_buttons'>
-                            <button onClick={()=> history.push(`/images/edit/${id}`)} ><i class="far fa-edit"></i></button>
-                            <button onClick={deleteImg} ><i class="far fa-trash-alt"></i></button>
+                            <button onClick={()=> history.push(`/images/edit/${id}`)} ><i className="far fa-edit"></i></button>
+                            <button onClick={deleteImg} ><i className="far fa-trash-alt"></i></button>
                         </div> : null}
                     </div>
                     <div className='image-column_comment' >
