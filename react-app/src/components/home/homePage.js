@@ -20,8 +20,8 @@ function HomePage() {
 
     return (
         <div className='homePage_container'>
-            <div>
-                <h1>PuPPIgram</h1>
+            <div className='homePage_title'>
+                <h1><i className="fas fa-paw"></i> puppiGram <i className="fas fa-paw"></i></h1>
             </div>
             <div className='imagesList_container'>
             {images.map(image => (

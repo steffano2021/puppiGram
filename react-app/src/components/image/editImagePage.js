@@ -18,6 +18,7 @@ const EditImageForm = () => {
     const [errors, setErrors] = useState([]);
     const [image, setImage] = useState(thisImg.image);
     const [caption, setCaption] = useState(thisImg.caption);
+    const [disableBtn, setDisableBtn] = useState(false);
 
     const imageInput = useRef();
     const dropZone = useRef();
@@ -92,6 +93,7 @@ const EditImageForm = () => {
 
     const submitImage = async (e) => {
         e.preventDefault();
+        setDisableBtn(true);
 
         let data;
         if (!image){
@@ -103,7 +105,8 @@ const EditImageForm = () => {
         }
 
         if (data.errors){
-            setErrors(data.errors)
+            setErrors(data.errors);
+            setDisableBtn(false);
             return
         } else {
             history.push('/home')
@@ -133,7 +136,7 @@ const EditImageForm = () => {
             <span className='error-Caption'>{errors?.caption}</span>
             </div>
             <div className='imagePost-buttons_container'>
-                <button type='submit' onClick={()=>setImage(imageInput.current.files[0])}>submit changes</button>
+                <button type='submit' disabled={disableBtn} onClick={()=>setImage(imageInput.current.files[0])}>submit changes</button>
                 <button type='button' onClick={deleteImg}>delete</button>
                 <button type='button' onClick={() => history.push('/home')} >cancel</button>
             </div>
