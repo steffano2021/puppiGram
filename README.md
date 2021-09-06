@@ -1,3 +1,11 @@
+# PuppiGram
+
+puppiGram is a clone of instagram. Its focus is users sharing photos of their beloved pets, and  other pet photos they like. at this time it only allows sharing photos and commenting. likes, profile page, and direct messaging is to come in the near future.
+
+
+puppigram stores all photos posted on an aws photo bucket. This allows users to not only be restricted to posting photo links. Users can directly submit a photo from their local device library.
+
+# Frontend Overview
 # Flask React Project
 
 This is the starter for the Flask React project.

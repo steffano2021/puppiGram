@@ -19,6 +19,7 @@ const ImagePostForm = () => {
     const [errors, setErrors] = useState([]);
     const [image, setImage] = useState('');
     const [caption, setCaption] = useState('');
+    const [disableBtn, setDisableBtn] = useState(false);
 
     const openInput = () => {
         imageInput.current.click()
@@ -82,9 +83,11 @@ const ImagePostForm = () => {
 
     const submitImage = async (e) => {
         e.preventDefault();
+        setDisableBtn(true);
         const data = await dispatch(fetchCreateImage(user_id, image, caption))
         if (data.errors){
             setErrors(data.errors)
+            setDisableBtn(false)
             return
         } else {
             history.push('/home')
@@ -108,7 +111,7 @@ const ImagePostForm = () => {
             <span className='error-Caption'>{errors?.caption}</span>
             </div>
             <div className='imagePost-buttons_container'>
-                <button type='submit' onClick={()=>setImage(imageInput.current.files[0])} >submit image</button>
+                <button type='submit' disabled={disableBtn} onClick={()=>setImage(imageInput.current.files[0])} >submit image</button>
                 <button type='reset' onClick={resetAll}>reset</button>
                 <button type='button' onClick={() => history.push('/home')} >cancel</button>
             </div>

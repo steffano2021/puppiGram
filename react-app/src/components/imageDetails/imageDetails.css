@@ -1,3 +1,5 @@
+/* profile column font */
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@700&display=swap');
 
 .imageDetails_page{
     width: 100%;
@@ -14,6 +16,7 @@
     display: flex;
     width: 700px;
     height: auto;
+    background-color: white;
 }
 
 .image-column{
@@ -101,4 +104,9 @@
     color: red;
     font-size: 10px;
     margin-left: 50px;
+}
+
+.profile-column_username{
+    font-size: large;
+    font-family: 'Azeret Mono', monospace;
 }

@@ -1,3 +1,5 @@
+/* homa page title font */
+@import url('https://fonts.googleapis.com/css2?family=Goblin+One&display=swap');
 
 .homePage_container{
     width: 100%;
@@ -7,6 +9,11 @@
     flex-direction: column;
 }
 
+.homePage_title{
+    padding-top: 10px;
+    font-family: 'Goblin One', cursive;
+}
+
 .imagesList_container{
     display: flex;
     flex-direction: column-reverse;
@@ -14,9 +21,10 @@
 
 .image_container{
     border: thick double #457b9d;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     padding: 15px;
+    background-color: white;
 }
 
 
