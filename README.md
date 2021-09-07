@@ -1,21 +1,82 @@
+<p align='center'>
+  <img src='./readme-assets/images/puppigra_logo.png' height='50px'>
+</p>
+
 # PuppiGram
 
-puppiGram is a clone of instagram. Its focus is users sharing photos of their beloved pets, and  other pet photos they like. at this time it only allows sharing photos and commenting. likes, profile page, and direct messaging is to come in the near future.
+PuppiGram is a clone of instagram. Its focus is users sharing photos of their beloved pets, and  other pet photos they like. At this time it only allows sharing photos and commenting. Likes, profile page, and direct messaging is to come in the near future.
 
 
-puppigram stores all photos posted on an aws photo bucket. This allows users to not only be restricted to posting photo links. Users can directly submit a photo from their local device library.
+PuppiGram stores all photos on an aws photo bucket. This allows users to not only be restricted to posting photo links. Users can directly submit a photo from their local device library.
+
+* View the <a href='https://puppigram1.herokuapp.com/'>puppigram</a> App Live
+
+* Reference to puppiGram <a href='https://github.com/steffano2021/puppiGram/wiki'>Wiki Docs</a>
 
 # Frontend Overview
-# Flask React Project
 
-This is the starter for the Flask React project.
+Created a drop-in box so users can drop photos directly to the website and post it.
 
+Post a new image
+![Add {resource-1}](./readme-assets/images/puppigra_post.png)
+
+# Backend Overview
+
+Using flask, created multiple back end with a forms serving as error handlers. when editing an image, if the caption was only edited, then an PUT method is executed. If the image and caption was changed, then a PATCH method is executed instead. The PUT method did not interact with aws unlike the PATCH method.
+
+Part of code is shown below:
+
+```python
+    elif request.method == 'PUT':  # not submitting to aws
+        form = ImageEditForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit():
+            data = form.data
+            # image.image = data['image']
+            image.caption = data['caption']
+            db.session.commit()
+            return image.to_dict()
+        else:
+            return {'errors':form.errors}, 500
+
+    elif request.method == 'PATCH': # submits to aws
+        form = ImageCreateForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit():
+            data = form.data
+            file = data['image']
+            file_url = upload_file_to_s3(file, Config.S3_BUCKET)
+            image.image = file_url,
+            image.caption = data['caption']
+            db.session.commit()
+            return image.to_dict()
+        else:
+            return {'errors':form.errors}, 500
+```
+
+
+
+## Technologies
+* <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://img.shields.io/badge/-JavaScript-F7DF1E?logo=JavaScript&logoColor=333333" /></a>
+* <a href="https://www.postgresql.org/"><img src="https://img.shields.io/badge/-PostgreSQL-336791?logo=PostgreSQL&logoColor=white" /></a>
+* <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white"></a>
+* <a href="https://reactjs.org/"><img src="https://img.shields.io/badge/react-%2320232a.svg?style=flat&logo=react&logoColor=%2361DAFB"></a>
+* <a href="https://redux.js.org/"><img src="https://img.shields.io/badge/redux-%23593d88.svg?style=flat&logo=redux&logoColor=white"></a>
+* <a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://img.shields.io/badge/-CSS3-1572B6?logo=CSS3" /></a>
+* <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" /></a>
+* <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white" /></a>
+* <a href="https://aws.amazon.com/"><img src="https://img.shields.io/badge/Heroku-430098?style=flat&logo=heroku&logoColor=white" /></a>
+
+* <a href="https://aws.amazon.com/"><img src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white" /></a>
+
+
+# Installing to your local computer
 ## Getting started
 
 1. Clone this repository (only this branch)
 
    ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+   git clone https://github.com/steffano2021/puppiGram.git
    ```
 
 2. Install dependencies
@@ -140,3 +201,10 @@ of your Heroku app in the url and tag name:
    ```bash=3
    docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
    ```
+
+## Contact
+
+### Steffano Vidal-Espinoza
+<a href="https://www.linkedin.com/in/steffanovidal/"><img src="./readme-assets/logos/linkedin-logo.png" height="28" align="middle" /></a>
+<a href="https://angel.co"><img src="./readme-assets/logos/angellist-logo.png" height="28" align="middle" /></a>
+<a href="https://github.com/steffano2021"><img src="./readme-assets/logos/github-logo.png" height="38" align="middle" /></a>
