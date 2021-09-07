@@ -15,8 +15,7 @@ class Image(db.Model):
     created_at = db.Column(db.Date , nullable=False)
     updated_at = db.Column(db.Date , nullable=False)
 
-    users = db.relationship("User", backref="image", lazy=True)
-    comments = db.relationship("Comment", backref="image", lazy=True, cascade="all, delete")
+    comments = db.relationship("Comment", backref="images", lazy=True, cascade="all, delete")
 
     def to_dict(self):
         return {
@@ -24,6 +23,7 @@ class Image(db.Model):
         'user_id': self.user_id,
         'image': self.image,
         'caption':self.caption,
+        'username': self.img.username,
         'created_at': self.created_at,
         'updated_at': self.updated_at
         }
