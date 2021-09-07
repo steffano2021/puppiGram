@@ -1,5 +1,10 @@
 from .db import db
 
+likes = db.Table('likes',
+    db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+    db.Column('image_id', db.Integer, db.ForeignKey('images.id'), primary_key=True)
+)
+
 class Image(db.Model):
     __tablename__ = 'images'
 
@@ -10,8 +15,8 @@ class Image(db.Model):
     created_at = db.Column(db.Date , nullable=False)
     updated_at = db.Column(db.Date , nullable=False)
 
-    comments = db.relationship("Comment", backref=db.backref("images"), lazy=True, cascade="all, delete")
-    users = db.relationship("User", secondary='likes', backref=db.backref("images"), lazy=True)
+    users = db.relationship("User", backref="image", lazy=True)
+    comments = db.relationship("Comment", backref="image", lazy=True, cascade="all, delete")
 
     def to_dict(self):
         return {
