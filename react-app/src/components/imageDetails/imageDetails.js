@@ -17,7 +17,6 @@ const ImageDetailsPage = () => {
     const thisImg = useSelector(state => state.image[id]);
     const user_id = useSelector(state => state.session.user?.id);
     const commentsObj = useSelector(state => state.comment[id]);
-    const names = useSelector(state => state.usernames);
     const image_id = id;
 
     let comments = [];
@@ -86,7 +85,7 @@ const ImageDetailsPage = () => {
                 <div className='profile-column'>
                     <div>
                         <div></div>
-                        <div className='profile-column_username'>{names[thisImg.user_id].username}'s photo</div>
+                        <div className='profile-column_username'>{thisImg.username}'s photo</div>
                     </div>
                     <div></div>
                 </div>

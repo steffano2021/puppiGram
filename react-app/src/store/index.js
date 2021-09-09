@@ -9,7 +9,6 @@ const rootReducer = combineReducers({
   session,
   image,
   comment,
-  usernames,
 });
 
 
