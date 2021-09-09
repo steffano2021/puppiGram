@@ -1,3 +1,6 @@
+
+# no longer used, replaced with a table in image.py
+
 # from .db import db
 
 # class Like(db.Model):

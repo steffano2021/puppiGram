@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, request, session, redirect
+from flask.helpers import url_for
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
@@ -10,6 +11,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.image_routes import image_routes
 from .api.comment_routes import comment_routes
+from .api.like_routes import like_routes
 
 from .seeds import seed_commands
 
@@ -37,6 +39,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(image_routes, url_prefix='/api/images')
 app.register_blueprint(comment_routes, url_prefix='/api/comments')
+app.register_blueprint(like_routes, url_prefix='/api/likes')
 
 
 # Application Security
