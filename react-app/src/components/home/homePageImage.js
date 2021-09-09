@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { fetchLikeImage, fetchUndoLike, fetchAllLikes } from '../../store/like'
 
 
 function HomePageImage({image}){
-
     const dispatch = useDispatch();
 
-    const [liked, setLiked] = useState(false)
+    const user_id = useSelector(state => state.session.user?.id);
+    // id is image_id here
+    const id = image.id;
 
-    const likePhoto = () => {
-        setLiked(!liked)
+    const [liked, setLiked] = useState(false);
+
+    const likePhoto = async() => {
         if (!liked){
+            await dispatch(fetchLikeImage(id, user_id))
             // dispatch() send to a createLike thunk
         } else {
+            await dispatch(fetchUndoLike(id,user_id))
             // dispatch() send to a deleteLike thunk
         }
-
+        setLiked(!liked)
     }
 
     return (
@@ -28,7 +33,7 @@ function HomePageImage({image}){
                 <p>{image.created_at.slice(4,16)}</p>
             </div>
         </NavLink>
-                <div onClick={likePhoto} > {liked ? 'filled star' : 'star'} </div>
+                <div onClick={likePhoto} > {liked ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>} </div>
         </div>
     )
 }

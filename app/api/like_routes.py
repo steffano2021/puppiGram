@@ -4,6 +4,14 @@ from app.models import Image, db, User
 
 like_routes = Blueprint('likes', __name__)
 
+# for redux store, to display if the image has been liked before
+@like_routes.route('/all/<int:id>')
+def get_all_user_likes(id):
+    user = User.query.get(id)
+    likes = user.image_likes
+    return { like.id:True for like in likes }
+
+
 # to display a list of users that liked an image
 @like_routes.route('/<int:id>')
 def get_likes_list(id):
