@@ -74,8 +74,8 @@ const ImageDetailsPage = () => {
                             <form className='image-column_form' onSubmit={postComment}>
                             <textarea className='image-column_textarea' placeholder='Enter a comment' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                             <div className='image-column_form-btns'>
-                            <button type='submit'><i class="far fa-paper-plane"></i></button>
-                            <button type='reset' onClick={clearTextArea} ><i class="fas fa-eraser"></i></button>
+                            <button type='submit'><i className="far fa-paper-plane"></i></button>
+                            <button type='reset' onClick={clearTextArea} ><i className="fas fa-eraser"></i></button>
                             </div>
                             </form>
                             <div className='image-column_error' >{errors?.description}</div>
