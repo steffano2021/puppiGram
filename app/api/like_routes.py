@@ -4,6 +4,7 @@ from app.models import Image, db, User
 
 like_routes = Blueprint('likes', __name__)
 
+# to display a list of users that liked an image
 @like_routes.route('/<int:id>')
 def get_likes_list(id):
     image = Image.query.get(id)
@@ -12,6 +13,7 @@ def get_likes_list(id):
     return { user.id: user.username for user in users }
 
 
+# adds a like to the image
 @like_routes.route('/<int:id>', methods=['POST'])
 def create_like(id):
     try:
@@ -26,7 +28,7 @@ def create_like(id):
     else:
         return {'success':'yes'}
 
-
+# put deletes like and delete wipes all likes. delete must be called before deleting an image
 @like_routes.route('/<int:id>', methods=['PUT','DELETE'])
 def delete_like(id):
     image = Image.query.get(id)
