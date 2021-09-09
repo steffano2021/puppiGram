@@ -20,7 +20,7 @@ function HomePageImage({image}){
     }
 
     return (
-        <div key={image.id} className='image_container'>
+        <div className='image_container'>
         <NavLink to={`/images/details/${image.id}`} >
             <img className='image_image' src={image.image} alt={image.id} />
             <div className='image_caption'>

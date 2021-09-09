@@ -17,7 +17,7 @@ function HomePage() {
             </div>
             <div className='imagesList_container'>
             {images.map(image => (
-                <HomePageImage image={image} />
+                <HomePageImage key={image.id} image={image} />
             ))}
             </div>
         </div>
