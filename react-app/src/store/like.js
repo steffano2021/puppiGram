@@ -1,5 +1,13 @@
 
+const ALL_USER_LIKES = 'likes/ALL_USER_LIKES'
 
+const allLikes = (likes) => ({
+    type: ALL_USER_LIKES,
+    payload: likes
+})
+
+
+// to display the amount of likes on an image
 export const fetchAllLikes = (id) => async () => {
     const response = await fetch(`/api/likes/${id}`)
     const data = await response.json();
@@ -57,5 +65,31 @@ export const fetchDeleteAllLikes = (id) => async () => {
         return data
     } else {
         return data
+    }
+}
+
+
+export const fetchAllPersonalLikes = (user_id) => async (dispatch) => {
+    const response = await fetch(`/api/likes/all/${user_id}`)
+    if (response.ok){
+        const data = await response.json();
+        dispatch(allLikes(data))
+        return data
+    } else {
+        return
+    }
+}
+
+
+let initialState = {};
+
+export default function reducer(state = initialState, action){
+    let newState;
+    switch(action.type){
+        case ALL_USER_LIKES:
+            newState = {...action.payload}
+            return newState;
+        default:
+            return state
     }
 }

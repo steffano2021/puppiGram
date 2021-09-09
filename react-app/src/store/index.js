@@ -3,12 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import image from './image'
 import comment from './comment'
-import usernames from './usernames'
+import like from './like'
 
 const rootReducer = combineReducers({
   session,
   image,
   comment,
+  like,
 });
 
 
