@@ -8,7 +8,7 @@ const allLikes = (likes) => ({
 
 
 // to display the amount of likes on an image
-export const fetchAllLikes = (id) => async () => {
+export const fetchAllImageLikes = (id) => async () => {
     const response = await fetch(`/api/likes/${id}`)
     const data = await response.json();
     if (response.ok){
@@ -68,7 +68,7 @@ export const fetchUndoLike = (id, user_id) => async () => {
 //     }
 // }
 
-
+// adds the likes a user has made to the store
 export const fetchAllPersonalLikes = (user_id) => async (dispatch) => {
     const response = await fetch(`/api/likes/all/${user_id}`)
     if (response.ok){

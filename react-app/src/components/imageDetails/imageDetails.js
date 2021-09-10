@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { fetchDeleteImage } from '../../store/image';
 import { fetchCreateComment } from '../../store/comment';
+import { fetchAllImageLikes } from '../../store/like';
 import './imageDetails.css'
 
 import CommentComponent from './commentComponent';
@@ -27,6 +28,7 @@ const ImageDetailsPage = () => {
 
     const [errors, setErrors] = useState([]);
     const [description, setDescription] = useState('')
+    const [likesAmount, setLikesAmount] = useState([])
 
     const postComment = async(e) => {
         e.preventDefault()
@@ -49,6 +51,14 @@ const ImageDetailsPage = () => {
         setDescription('')
     }
 
+    useEffect(() => {
+        (async() => {
+            let likesArray = await dispatch(fetchAllImageLikes(image_id));
+            setLikesAmount(Object?.values(likesArray));
+          })();
+    }, [dispatch])
+
+
     return (
         <div className='imageDetails_page'>
             <div className='details_container'>
@@ -57,7 +67,7 @@ const ImageDetailsPage = () => {
                         <img className='image-column_image' src={thisImg.image} alt='user-image' />
                     </div>
                     <div className='image-column_qty-btn' >
-                        <div>0 likes and {comments?.length} comments</div>
+                        <div>{likesAmount.length} likes and {comments?.length} comments</div>
                         {user_id == thisImg.user_id ?
                         <div className='image-column_buttons'>
                             <button onClick={()=> history.push(`/images/edit/${id}`)} ><i className="far fa-edit"></i></button>

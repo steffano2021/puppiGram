@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchLikeImage, fetchUndoLike, fetchAllLikes } from '../../store/like'
+import { fetchLikeImage, fetchUndoLike } from '../../store/like'
 
 
 function HomePageImage({image, clicked}){
