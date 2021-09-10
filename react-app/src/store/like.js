@@ -54,19 +54,19 @@ export const fetchUndoLike = (id, user_id) => async () => {
     }
 }
 
+// ? dont seem to need it
+// export const fetchDeleteAllLikes = (id) => async () => {
+//     const response = await fetch(`/api/likes/${id}`,{
+//         method: 'DELETE'
+//     })
 
-export const fetchDeleteAllLikes = (id) => async () => {
-    const response = await fetch(`/api/likes/${id}`,{
-        method: 'DELETE'
-    })
-
-    const data = await response.json();
-    if (response.ok){
-        return data
-    } else {
-        return data
-    }
-}
+//     const data = await response.json();
+//     if (response.ok){
+//         return data
+//     } else {
+//         return data
+//     }
+// }
 
 
 export const fetchAllPersonalLikes = (user_id) => async (dispatch) => {

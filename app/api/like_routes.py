@@ -36,7 +36,7 @@ def create_like(id):
     else:
         return {'success':'yes'}
 
-# put deletes like and delete wipes all likes. delete must be called before deleting an image
+# put deletes like and delete wipes all likes
 @like_routes.route('/<int:id>', methods=['PUT','DELETE'])
 def delete_like(id):
     image = Image.query.get(id)
@@ -48,11 +48,11 @@ def delete_like(id):
         image.image_like.remove(user)
         db.session.commit()
         return {"deletion": "successful"}
-
-    elif request.method == 'DELETE':
-        image.image_like = []
-        db.session.commit()
-        return {"deletion":"successful"}
+    # don't need it
+    # elif request.method == 'DELETE':
+    #     image.image_like = []
+    #     db.session.commit()
+    #     return {"deletion":"successful"}
 
     else:
         return {"errors": "method does not exist"}, 500

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './homePage.css'
@@ -13,10 +13,14 @@ function HomePage() {
 
     const user_id = useSelector(state => state.session.user?.id);
     const images = Object.values( useSelector(state => state.image));
+    const likes = useSelector(state => state.like)
+
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         (async() => {
             await dispatch(fetchAllPersonalLikes(user_id));
+            setLoaded(true)
           })();
     }, [dispatch])
 
@@ -26,9 +30,9 @@ function HomePage() {
                 <h1><i className="fas fa-paw"></i> puppiGram <i className="fas fa-paw"></i></h1>
             </div>
             <div className='imagesList_container'>
-            {images.map(image => (
-                <HomePageImage key={image.id} image={image} />
-            ))}
+            { loaded ? images.map(image => (
+                <HomePageImage key={image.id} image={image} clicked={likes[image.id]} />
+            )): null}
             </div>
         </div>
     )

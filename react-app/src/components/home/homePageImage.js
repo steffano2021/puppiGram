@@ -4,22 +4,24 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchLikeImage, fetchUndoLike, fetchAllLikes } from '../../store/like'
 
 
-function HomePageImage({image}){
+function HomePageImage({image, clicked}){
     const dispatch = useDispatch();
 
     const user_id = useSelector(state => state.session.user?.id);
     // id is image_id here
     const id = image.id;
 
-    const [liked, setLiked] = useState(false);
+    const [liked, setLiked] = useState(clicked);
 
     const likePhoto = async() => {
+        if (!user_id) return
+
         if (!liked){
             await dispatch(fetchLikeImage(id, user_id))
-            // dispatch() send to a createLike thunk
+            // creates a like
         } else {
             await dispatch(fetchUndoLike(id,user_id))
-            // dispatch() send to a deleteLike thunk
+            // deletes a like
         }
         setLiked(!liked)
     }
