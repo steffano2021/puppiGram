@@ -3,18 +3,24 @@ import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './homePage.css'
 
-import { fetchAllNames } from '../../store/usernames';
+import { fetchAllPersonalLikes } from '../../store/like';
+
+import HomePageImage from './homePageImage';
 
 function HomePage() {
 
     const dispatch = useDispatch();
 
-    const user = useSelector(state => state.session.user);
+    const user_id = useSelector(state => state.session.user?.id);
     const images = Object.values( useSelector(state => state.image));
+    const likes = useSelector(state => state.like)
+
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         (async() => {
-            await dispatch(fetchAllNames());
+            await dispatch(fetchAllPersonalLikes(user_id));
+            setLoaded(true)
           })();
     }, [dispatch])
 
@@ -24,17 +30,9 @@ function HomePage() {
                 <h1><i className="fas fa-paw"></i> puppiGram <i className="fas fa-paw"></i></h1>
             </div>
             <div className='imagesList_container'>
-            {images.map(image => (
-                <div key={image.id} className='image_container'>
-                <NavLink to={`/images/details/${image.id}`} >
-                    <img className='image_image' src={image.image} alt={image.id} />
-                    <div className='image_caption'>
-                    <p>{image.caption}</p>
-                    <p>{image.created_at.slice(4,16)}</p>
-                    </div>
-                </NavLink>
-                </div>
-            ))}
+            { loaded ? images.map(image => (
+                <HomePageImage key={image.id} image={image} clicked={likes[image.id]} />
+            )): null}
             </div>
         </div>
     )

@@ -1,4 +1,6 @@
 
+// no longer used
+
 const ALL_NAMES = 'user/ALL_USERS'
 
 const allNames = (usernames) => ({

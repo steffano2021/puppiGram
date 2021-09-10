@@ -11,7 +11,10 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    followers = db.relationship("Follower", backref=db.backref("users"), lazy=True )
+    image_likes = db.relationship("Image", secondary="likes", lazy=True, backref=db.backref("image_like", lazy=True))
+    images = db.relationship("Image", backref="img", lazy=True)
+    comments = db.relationship("Comment", backref="user", lazy=True)
+    followers = db.relationship("Follower", backref="user", lazy=True)
 
     @property
     def password(self):

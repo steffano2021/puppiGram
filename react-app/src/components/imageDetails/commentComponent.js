@@ -9,7 +9,7 @@ const CommentComponent = ({comment, image_id}) => {
     const dispatch = useDispatch();
 
     const user_id = useSelector(state => state.session.user?.id);
-    const names = useSelector(state => state.usernames);
+    // const names = useSelector(state => state.usernames);
 
     const [description, setDescription] = useState(comment.description);
     const [errors, setErrors] = useState([]);
@@ -40,7 +40,7 @@ const CommentComponent = ({comment, image_id}) => {
     return (
         <div className='comment_container'>
                 <div className='comment_top'>
-                    {names[comment.user_id].username}
+                    {comment.username}
                 </div>
                 {!editMode ?
                 <div className='comment_middle'>

@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { fetchDeleteImage } from '../../store/image';
 import { fetchCreateComment } from '../../store/comment';
+import { fetchAllImageLikes } from '../../store/like';
 import './imageDetails.css'
 
 import CommentComponent from './commentComponent';
@@ -17,7 +18,6 @@ const ImageDetailsPage = () => {
     const thisImg = useSelector(state => state.image[id]);
     const user_id = useSelector(state => state.session.user?.id);
     const commentsObj = useSelector(state => state.comment[id]);
-    const names = useSelector(state => state.usernames);
     const image_id = id;
 
     let comments = [];
@@ -28,6 +28,7 @@ const ImageDetailsPage = () => {
 
     const [errors, setErrors] = useState([]);
     const [description, setDescription] = useState('')
+    const [likesAmount, setLikesAmount] = useState([])
 
     const postComment = async(e) => {
         e.preventDefault()
@@ -50,6 +51,14 @@ const ImageDetailsPage = () => {
         setDescription('')
     }
 
+    useEffect(() => {
+        (async() => {
+            let likesArray = await dispatch(fetchAllImageLikes(image_id));
+            setLikesAmount(Object?.values(likesArray));
+          })();
+    }, [dispatch])
+
+
     return (
         <div className='imageDetails_page'>
             <div className='details_container'>
@@ -58,7 +67,7 @@ const ImageDetailsPage = () => {
                         <img className='image-column_image' src={thisImg.image} alt='user-image' />
                     </div>
                     <div className='image-column_qty-btn' >
-                        <div>0 likes and {comments?.length} comments</div>
+                        <div>{likesAmount.length} likes and {comments?.length} comments</div>
                         {user_id == thisImg.user_id ?
                         <div className='image-column_buttons'>
                             <button onClick={()=> history.push(`/images/edit/${id}`)} ><i className="far fa-edit"></i></button>
@@ -75,8 +84,8 @@ const ImageDetailsPage = () => {
                             <form className='image-column_form' onSubmit={postComment}>
                             <textarea className='image-column_textarea' placeholder='Enter a comment' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                             <div className='image-column_form-btns'>
-                            <button type='submit'><i class="far fa-paper-plane"></i></button>
-                            <button type='reset' onClick={clearTextArea} ><i class="fas fa-eraser"></i></button>
+                            <button type='submit'><i className="far fa-paper-plane"></i></button>
+                            <button type='reset' onClick={clearTextArea} ><i className="fas fa-eraser"></i></button>
                             </div>
                             </form>
                             <div className='image-column_error' >{errors?.description}</div>
@@ -86,7 +95,7 @@ const ImageDetailsPage = () => {
                 <div className='profile-column'>
                     <div>
                         <div></div>
-                        <div className='profile-column_username'>{names[thisImg.user_id].username}'s photo</div>
+                        <div className='profile-column_username'>{thisImg.username}'s photo</div>
                     </div>
                     <div></div>
                 </div>
