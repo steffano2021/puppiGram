@@ -34,7 +34,9 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'avatar': self.avatar,
+            'bio': self.bio,
         }
 
     def just_name(self):

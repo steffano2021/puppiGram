@@ -31,7 +31,7 @@ function HomePageImage({image, clicked}){
         <div className='image_container'>
             <div className='image-username_container' >
                 <div className='image_avatar_container' >
-                    <img className='image_avatar' src={image.image} alt={image.id} />
+                    <img className='image_avatar' src={image.avatar} alt={image.id} />
                 </div>
                 <div className='image_username' > {image.username}</div>
             </div>
