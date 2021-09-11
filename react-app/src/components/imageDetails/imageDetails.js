@@ -55,6 +55,7 @@ const ImageDetailsPage = () => {
         (async() => {
             let likesArray = await dispatch(fetchAllImageLikes(image_id));
             setLikesAmount(Object?.values(likesArray));
+            window.scrollTo(0,0)
           })();
     }, [dispatch])
 
