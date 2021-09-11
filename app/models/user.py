@@ -10,6 +10,9 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    avatar = db.Column(db.Text, default="https://i.imgur.com/Ea0Topw.jpg")
+    bio = db.Column(db.String(255), default="This user hasn't made a bio yet.")
+
 
     image_likes = db.relationship("Image", secondary="likes", lazy=True, backref=db.backref("image_like", lazy=True))
     images = db.relationship("Image", backref="img", lazy=True)

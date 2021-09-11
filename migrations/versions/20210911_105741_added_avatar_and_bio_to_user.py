@@ -1,8 +1,8 @@
-"""new tables
+"""added avatar and bio to user
 
-Revision ID: e7092e82f42d
+Revision ID: 4695199be172
 Revises: 
-Create Date: 2021-09-06 22:47:00.240815
+Create Date: 2021-09-11 10:57:41.707694
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'e7092e82f42d'
+revision = '4695199be172'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,6 +23,8 @@ def upgrade():
     sa.Column('username', sa.String(length=40), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
+    sa.Column('avatar', sa.Text(), nullable=True),
+    sa.Column('bio', sa.String(length=255), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
