@@ -135,6 +135,6 @@
 .logout-btn{
     border: none;
     background-color: #568ad300;
-    font-family: 'Kaisei HarunoUmi', serif;
-    font-size: 18px;
+    font-size: 27px;
+    padding: 0;
 }
