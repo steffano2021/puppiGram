@@ -41,12 +41,22 @@ const NavBar = () => {
               </>
               : <>
               <div>
+                <NavLink to='/home' exact={true} activeClassName='active' >
+                <i className="fas fa-home"></i>
+                </NavLink>
+              </div>
+              <div>
                 <NavLink to='/images/create' exact={true} activeClassName='active' >
-                  Post
+                <i className="fas fa-image"></i>
                 </NavLink>
               </div>
               <div>
                 <LogoutButton />
+              </div>
+              <div>
+                <NavLink to={`/profile/${user.id}`} exact={true} activeClassName='active' >
+                <i className="fas fa-user-circle"></i>
+                </NavLink>
               </div>
               </>
           }

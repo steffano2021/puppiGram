@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchLikeImage, fetchUndoLike } from '../../store/like'
+import './homePageImage.css'
 
 
 function HomePageImage({image, clicked}){
@@ -28,14 +29,31 @@ function HomePageImage({image, clicked}){
 
     return (
         <div className='image_container'>
-        <NavLink to={`/images/details/${image.id}`} >
-            <img className='image_image' src={image.image} alt={image.id} />
-            <div className='image_caption'>
-                <p>{image.caption}</p>
-                <p>{image.created_at.slice(4,16)}</p>
+            <div className='image-username_container' >
+                <div className='image_avatar_container' >
+                    <img className='image_avatar' src={image.image} alt={image.id} />
+                </div>
+                <div className='image_username' > {image.username}</div>
             </div>
-        </NavLink>
-                <div onClick={likePhoto} > {liked ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>} </div>
+            <NavLink to={`/images/details/${image.id}`} >
+                <img className='image_image' src={image.image} alt={image.id} />
+            </NavLink>
+            <div className='image_bottom'>
+                <div className='image_icons' >
+                    <div className='image_like' onClick={likePhoto} >
+                        {liked ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>}
+                    </div>
+                    <NavLink to={`/images/details/${image.id}`} >
+                        <i className="far fa-comment"></i>
+                    </NavLink>
+                </div>
+                <div className='image_caption'>
+                    <div className='image_username' > {image.username}</div> {image.caption}
+                </div>
+                <div className='image_date' >
+                    {image.created_at.slice(4,16)}
+                </div>
+            </div>
         </div>
     )
 }
