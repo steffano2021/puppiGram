@@ -18,17 +18,3 @@
     display: flex;
     flex-direction: column-reverse;
 }
-
-.image_container{
-    border: thick double #457b9d;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    padding: 15px;
-    background-color: white;
-}
-
-
-.image_image{
-    width: 500px;
-    height: 500px;
-}
