@@ -41,7 +41,11 @@
     display: flex;
     justify-content: space-between;
     font-size: 28px;
-    width: 70px;
+    width: 80px;
+}
+
+.image_like{
+    cursor: pointer;
 }
 
 /* just to make the icons black */

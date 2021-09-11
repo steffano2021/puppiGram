@@ -40,7 +40,7 @@ function HomePageImage({image, clicked}){
             </NavLink>
             <div className='image_bottom'>
                 <div className='image_icons' >
-                    <div onClick={likePhoto} >
+                    <div className='image_like' onClick={likePhoto} >
                         {liked ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>}
                     </div>
                     <NavLink to={`/images/details/${image.id}`} >
