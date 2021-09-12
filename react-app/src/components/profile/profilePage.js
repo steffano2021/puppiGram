@@ -1,49 +1,58 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
+import { fetchUserProfile } from '../../store/userProfile';
+import './profilePage.css'
 
 
 const ProfilePage = () => {
 
+    const history = useHistory();
     const dispatch = useDispatch();
+    let { id } = useParams();
 
-    const [loaded, setLoaded] = useState(false)
+    const [profile, setProfile] = useState({});
+    const [images, setImages] = useState([]);
 
     useEffect(() => {
         (async() => {
-        setLoaded(true);
+        let data = await dispatch(fetchUserProfile(id));
+        setProfile(data)
+        setImages(Object.values(data.images))
         })();
 
     }, [dispatch])
-
-    if (!loaded) {
-        return null;
-    }
 
     return (
         <div className='profile_page'>
             <div className='profile-page_container'>
                 <div className='profile_info'>
-                    <div className='profile_left'>
-                        <img src='' alt='' />
+                    <div className='profile-info_left'>
+                        <img className='profile_avatar' src={profile?.avatar} alt='avatar' />
                     </div>
-                    <div className='profile_right'>
-                        <div>
-                            name and edit btn
+                    <div className='profile-info_right'>
+                        <div className='profile-right_top'>
+                            <div>
+                                {profile?.username}
+                            </div>
+                            <div>
+                                {/* Edit btn */}
+                            </div>
                         </div>
-                        <div>
-                            followers amount
+                        <div className='profile-right_middle'>
+                            followers amount coming soon...
                         </div>
-                        <div>
-                            bio stuff
+                        <div className='profile-right_bottom'>
+                            {profile?.bio}
                         </div>
                     </div>
                 </div>
                 <div className='profile-images_list' >
-                    images...
+                    {images?.map(image => (
+                        <img onClick={() => {history.push(`/images/details/${image.id}`)}} className='profile-posted_image' key={image.id} src={image.image} alt='img' />
+                    ))}
                 </div>
-
             </div>
-
         </div>
     )
 }

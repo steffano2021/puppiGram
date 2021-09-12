@@ -54,7 +54,7 @@ const LoginForm = () => {
         </div>
         <div className='auth-form-input_container'>
           <span className='error-login'>{errors?.email}</span>
-          <i class="fas fa-envelope" />
+          <i className="fas fa-envelope" />
           <input
           name='email'
           type='text'
@@ -65,7 +65,7 @@ const LoginForm = () => {
         </div>
         <div className='auth-form-input_container'>
           <span className='error-login'>{errors?.password}</span>
-          <i class="fas fa-key" />
+          <i className="fas fa-key" />
           <input
           name='password'
           type='password'

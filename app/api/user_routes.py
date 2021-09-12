@@ -4,15 +4,12 @@ from app.models import User
 
 user_routes = Blueprint('users', __name__)
 
-
-@user_routes.route('/')
-def users():
-    users = User.query.all()
-    return {user.to_dict()['id']:user.just_name() for user in users}
-
-
-# @user_routes.route('/<int:id>')
-# @login_required
-# def user(id):
-#     user = User.query.get(id)
-#     return user.to_dict()
+# returns all needed to populate a profile page
+@user_routes.route('/profile/<int:id>')
+def user_profile(id):
+    user = User.query.get(id)
+    result = user.to_dict()
+    images = user.images
+    images = { image.for_profile()['id']: image.for_profile() for image in images }
+    result['images'] = images
+    return result

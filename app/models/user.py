@@ -38,8 +38,3 @@ class User(db.Model, UserMixin):
             'avatar': self.avatar,
             'bio': self.bio,
         }
-
-    def just_name(self):
-        return {
-            'username': self.username,
-        }
