@@ -24,6 +24,13 @@ class Image(db.Model):
         'image': self.image,
         'caption':self.caption,
         'username': self.img.username,
+        'avatar': self.img.avatar,
         'created_at': self.created_at,
         'updated_at': self.updated_at
+        }
+
+    def for_profile(self):
+        return {
+            'id': self.id,
+            'image': self.image,
         }

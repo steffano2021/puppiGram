@@ -21,6 +21,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .image_image{
@@ -60,6 +61,7 @@
 .image_username{
     font-weight: bold;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .image_date{

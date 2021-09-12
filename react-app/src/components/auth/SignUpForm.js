@@ -64,7 +64,7 @@ const SignUpForm = () => {
           </div>
           <div className='auth-form-input_container'>
           <span className='error-login'>{errors?.username}</span>
-              <i class="fas fa-user" />
+              <i className="fas fa-user" />
               <input
               type='text'
               name='username'
@@ -75,7 +75,7 @@ const SignUpForm = () => {
           </div>
           <div className='auth-form-input_container'>
           <span className='error-login'>{errors?.email}</span>
-            <i class="fas fa-envelope" />
+            <i className="fas fa-envelope" />
             <input
               type='text'
               name='email'
