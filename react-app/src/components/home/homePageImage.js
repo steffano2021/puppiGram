@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchLikeImage, fetchUndoLike } from '../../store/like'
 import './homePageImage.css'
@@ -7,6 +7,7 @@ import './homePageImage.css'
 
 function HomePageImage({image, clicked}){
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const user_id = useSelector(state => state.session.user?.id);
     // id is image_id here
@@ -27,13 +28,17 @@ function HomePageImage({image, clicked}){
         setLiked(!liked)
     }
 
+    const toProfilePage = () => {
+        history.push(`/profile/${image.user_id}`)
+    }
+
     return (
         <div className='image_container'>
             <div className='image-username_container' >
-                <div className='image_avatar_container' >
+                <div onClick={toProfilePage} className='image_avatar_container' >
                     <img className='image_avatar' src={image.avatar} alt={image.id} />
                 </div>
-                <div className='image_username' > {image.username}</div>
+                <div onClick={toProfilePage} className='image_username' > {image.username}</div>
             </div>
             <NavLink to={`/images/details/${image.id}`} >
                 <img className='image_image' src={image.image} alt={image.id} />
@@ -48,7 +53,7 @@ function HomePageImage({image, clicked}){
                     </NavLink>
                 </div>
                 <div className='image_caption'>
-                    <div className='image_username' > {image.username}</div> {image.caption}
+                    <div onClick={toProfilePage} className='image_username' > {image.username}</div> {image.caption}
                 </div>
                 <div className='image_date' >
                     {image.created_at.slice(4,16)}
