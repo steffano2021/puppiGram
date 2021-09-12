@@ -18,7 +18,8 @@ const ProfilePage = () => {
         (async() => {
         let data = await dispatch(fetchUserProfile(id));
         setProfile(data)
-        setImages(Object.values(data.images))
+        setImages(Object.values(data.images).reverse());
+        window.scrollTo(0,0)
         })();
 
     }, [dispatch])
