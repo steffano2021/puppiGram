@@ -49,6 +49,7 @@ const ImageDetailsPage = () => {
 
     const clearTextArea = () => {
         setDescription('')
+        setErrors([])
     }
 
     useEffect(() => {
@@ -67,13 +68,18 @@ const ImageDetailsPage = () => {
                     <div>
                         <img className='image-column_image' src={thisImg.image} alt='user-image' />
                     </div>
+                </div>
+                <div className='profile-column'>
+                    <div>
+                        <div className='profile-column_username'>{thisImg.username}'s photo</div>
+                    </div>
+                    {user_id == thisImg.user_id ?
+                    <div className='image-column_buttons'>
+                        <button onClick={()=> history.push(`/images/edit/${id}`)} ><i className="far fa-edit"></i></button>
+                        <button onClick={deleteImg} ><i className="far fa-trash-alt"></i></button>
+                    </div> : null}
                     <div className='image-column_qty-btn' >
                         <div>{likesAmount.length} likes and {comments?.length} comments</div>
-                        {user_id == thisImg.user_id ?
-                        <div className='image-column_buttons'>
-                            <button onClick={()=> history.push(`/images/edit/${id}`)} ><i className="far fa-edit"></i></button>
-                            <button onClick={deleteImg} ><i className="far fa-trash-alt"></i></button>
-                        </div> : null}
                     </div>
                     <div className='image-column_comment' >
                         <div className='image-column_comment-list'>
@@ -92,13 +98,6 @@ const ImageDetailsPage = () => {
                             <div className='image-column_error' >{errors?.description}</div>
                         </div>
                     </div>
-                </div>
-                <div className='profile-column'>
-                    <div>
-                        <div></div>
-                        <div className='profile-column_username'>{thisImg.username}'s photo</div>
-                    </div>
-                    <div></div>
                 </div>
             </div>
         </div>

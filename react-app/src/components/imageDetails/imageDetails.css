@@ -11,31 +11,30 @@
 }
 
 .details_container{
-    margin-top: 25px;
-    margin-bottom: 45px;
+    margin-top: 45px;
     display: flex;
-    width: 700px;
+    width: 800px;
     height: auto;
     background-color: white;
 }
 
 .image-column{
-    width: 70%;
-    display: flex;
+    width: 500px;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 .profile-column{
-    width: 30%;
+    width: 300px;
 }
 
 
 .image-column_image{
-    width: 350px;
-    height: 350px;
-    border-radius: 8px;
+    width: 500px;
+    height: 550px;
+    /* border-radius: 8px; */
 }
 
 .image-column_qty-btn{
