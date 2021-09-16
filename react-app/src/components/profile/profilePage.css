@@ -45,7 +45,7 @@
 }
 
 .profile-separation-line{
-    border-bottom: 2px solid black;
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0.76);
     margin-bottom: 20px;
     margin-top: -10px;
 }

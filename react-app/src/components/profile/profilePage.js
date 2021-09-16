@@ -22,7 +22,7 @@ const ProfilePage = () => {
         window.scrollTo(0,0)
         })();
 
-    }, [dispatch])
+    }, [dispatch, id])
 
     return (
         <div className='profile_page'>
