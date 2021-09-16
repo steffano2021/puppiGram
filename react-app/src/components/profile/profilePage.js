@@ -48,6 +48,7 @@ const ProfilePage = () => {
                         </div>
                     </div>
                 </div>
+                <div className='profile-separation-line'></div>
                 <div className='profile-images_list' >
                     {images?.map(image => (
                         <img onClick={() => {history.push(`/images/details/${image.id}`)}} className='profile-posted_image' key={image.id} src={image.image} alt='img' />

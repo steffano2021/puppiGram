@@ -10,8 +10,14 @@
 }
 
 .homePage_title{
-    padding-top: 10px;
+    padding-top: 20px;
     font-family: 'Goblin One', cursive;
+    width: 230px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 40px;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
 .imagesList_container{

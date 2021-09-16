@@ -1,11 +1,12 @@
 
 
 .image_container{
-    border: thin solid #457b9d;
+    border: 1px solid #9264ad;
     margin-top: 25px;
     margin-bottom: 25px;
     background-color: white;
     width: 600px;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.233);
 }
 
 .image-username_container{
@@ -22,6 +23,7 @@
     height: 40px;
     border-radius: 50%;
     cursor: pointer;
+    border: 1px solid #9264ad;
 }
 
 .image_image{
