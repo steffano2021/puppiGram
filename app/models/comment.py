@@ -17,6 +17,7 @@ class Comment(db.Model):
         'user_id': self.user_id,
         'description':self.description,
         'username': self.user.username,
+        'avatar': self.user.avatar,
         'created_at': self.created_at,
         'updated_at': self.updated_at
         }
