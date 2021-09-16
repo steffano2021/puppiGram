@@ -138,7 +138,7 @@ const EditImageForm = () => {
             <div className='imagePost-buttons_container'>
                 <button type='submit' disabled={disableBtn} onClick={()=>setImage(imageInput.current.files[0])}>submit changes</button>
                 <button type='button' onClick={deleteImg}>delete</button>
-                <button type='button' onClick={() => history.push('/home')} >cancel</button>
+                <button type='button' onClick={() => history.push(`/images/details/${id}`)} >cancel</button>
             </div>
         </form>
         </div>
