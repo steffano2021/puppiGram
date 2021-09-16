@@ -27,7 +27,8 @@ function HomePage() {
     return (
         <div className='homePage_container'>
             <div className='homePage_title'>
-                <h1><i className="fas fa-paw"></i> puppiGram <i className="fas fa-paw"></i></h1>
+                {/* <h1><i className="fas fa-paw"></i> puppiGram <i className="fas fa-paw"></i></h1> */}
+                <i className="fas fa-paw" /> <i className="fas fa-paw" /> <i className="fas fa-paw" />
             </div>
             <div className='imagesList_container'>
             { loaded ? images.map(image => (

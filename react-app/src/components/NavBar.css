@@ -3,11 +3,11 @@ nav{
 }
 
 .nav_container{
-    background-color: #bdd4f5;
+    background-color: #ebd6e2;
     width: 100%;
     height: 60px;
     display: flex;
-    justify-content:space-evenly;
+    justify-content:space-around;
     align-items: flex-end;
     padding-bottom: 10px;
     font-family: 'Kaisei HarunoUmi', serif;
@@ -22,8 +22,11 @@ nav{
 }
 
 .nav_left{
+    padding-right: 50px;
     height: 50px;
-    width: 140px;
+    width: 160px;
+    font-weight: bold;
+    font-family: 'Goblin One', cursive;
 }
 
 /* the logo and site name because they're inside a NavLink */
@@ -48,4 +51,8 @@ nav{
 
 .nav_right i{
     font-size: 27px;
+}
+
+.nav_right i:hover{
+    font-size: 37px;
 }

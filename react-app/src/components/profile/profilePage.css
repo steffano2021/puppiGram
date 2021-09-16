@@ -28,6 +28,7 @@
     width: 140px;
     height: 140px;
     border-radius: 50%;
+    border: 1px solid black;
 }
 
 .profile-info_right{
@@ -43,6 +44,12 @@
     flex-direction: row;
 }
 
+.profile-separation-line{
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0.76);
+    margin-bottom: 20px;
+    margin-top: -10px;
+}
+
 .profile-images_list{
     display: flex;
     flex-direction: row;
@@ -56,4 +63,5 @@
     height: 300px;
     margin-bottom: 40px;
     cursor: pointer;
+    border: 3px solid white;
 }
