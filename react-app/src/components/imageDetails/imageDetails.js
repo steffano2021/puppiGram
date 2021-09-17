@@ -78,7 +78,7 @@ const ImageDetailsPage = () => {
                         <div className='profile-column_user'>
                             <img onClick={sendToProfile} className='profile-column-avatar' src={thisImg.avatar} alt='' />
                             <div onClick={sendToProfile} className='profile-column_username'>
-                                {thisImg.username}'s photo
+                                {thisImg.username.slice(0,7)}
                             </div>
                             {user_id == thisImg.user_id ?
                             <div className='profile-column_buttons'>

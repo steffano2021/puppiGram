@@ -38,7 +38,7 @@ function HomePageImage({image, clicked}){
                 <div onClick={toProfilePage} className='image_avatar_container' >
                     <img className='image_avatar' src={image.avatar} alt={image.id} />
                 </div>
-                <div onClick={toProfilePage} className='image_username' > {image.username}</div>
+                <div onClick={toProfilePage} className='image_username' > {image.username.slice(0,7)}</div>
             </div>
             <NavLink to={`/images/details/${image.id}`} >
                 <img className='image_image' src={image.image} alt={image.id} />
