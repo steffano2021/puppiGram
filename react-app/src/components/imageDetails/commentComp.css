@@ -1,21 +1,34 @@
 
 .comment_container{
-    border: .5px solid rgba(128, 128, 128, 0.452);
+    /* border: .5px solid rgba(128, 128, 128, 0.452); */
     border-radius: 8px;
-    padding: 5px;
+    padding: 10px;
     height: 90px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
     margin-top: 3px;
-    width: 340px;
+    width: 270px;
+}
+
+.comment_top{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.comment_avatar{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding-right: 10px;
 }
 
 
 .comment-middle_textarea{
     resize: none;
-    width: 330px;
+    width: 260px;
     height: 80%;
     overflow-y: hidden;
     border-radius: 4px;
@@ -25,7 +38,7 @@
 .comment_bottom{
     display: flex;
     justify-content: space-between;
-    width: 335px;
+    width: 265px;
 }
 
 .comment_error{
@@ -41,11 +54,15 @@
 .comment-bottom_buttons{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 45px;
 }
 
 .comment-bottom_buttons button{
     border: none;
     background-color: transparent;
+}
+
+.comment-bottom_buttons button:hover{
+    color: rgb(252, 207, 207);
 }

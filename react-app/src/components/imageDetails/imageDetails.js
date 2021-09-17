@@ -49,6 +49,7 @@ const ImageDetailsPage = () => {
 
     const clearTextArea = () => {
         setDescription('')
+        setErrors([])
     }
 
     useEffect(() => {
@@ -59,6 +60,10 @@ const ImageDetailsPage = () => {
           })();
     }, [dispatch])
 
+    const sendToProfile = () => {
+        history.push(`/profile/${thisImg.user_id}`)
+    }
+
 
     return (
         <div className='imageDetails_page'>
@@ -67,38 +72,43 @@ const ImageDetailsPage = () => {
                     <div>
                         <img className='image-column_image' src={thisImg.image} alt='user-image' />
                     </div>
-                    <div className='image-column_qty-btn' >
-                        <div>{likesAmount.length} likes and {comments?.length} comments</div>
-                        {user_id == thisImg.user_id ?
-                        <div className='image-column_buttons'>
-                            <button onClick={()=> history.push(`/images/edit/${id}`)} ><i className="far fa-edit"></i></button>
-                            <button onClick={deleteImg} ><i className="far fa-trash-alt"></i></button>
-                        </div> : null}
+                </div>
+                <div className='profile-column'>
+                    <div className='profile-column_userInfo'>
+                        <div className='profile-column_user'>
+                            <img onClick={sendToProfile} className='profile-column-avatar' src={thisImg.avatar} alt='' />
+                            <div onClick={sendToProfile} className='profile-column_username'>
+                                {thisImg.username}'s photo
+                            </div>
+                            {user_id == thisImg.user_id ?
+                            <div className='profile-column_buttons'>
+                                <button onClick={()=> history.push(`/images/edit/${id}`)} ><i className="far fa-edit"></i></button>
+                                <button onClick={deleteImg} ><i className="far fa-trash-alt"></i></button>
+                            </div> : <div/>}
+                        </div>
+                        <div className='profile-column_qty-btn' >
+                            <div>{likesAmount.length} likes and {comments?.length} comments</div>
+                        </div>
                     </div>
-                    <div className='image-column_comment' >
-                        <div className='image-column_comment-list'>
-                            {comments?.map(comment => (
-                                <CommentComponent key={comment.id} comment={comment} image_id={image_id} />
-                            ))}
+                    <div className='profile-column_comment' >
+                        <div className='hide-scroll'>
+                            <div className='profile-column_comment-list'>
+                                {comments?.map(comment => (
+                                    <CommentComponent key={comment.id} comment={comment} image_id={image_id} />
+                                    ))}
+                            </div>
                         </div>
                         <div>
-                            <form className='image-column_form' onSubmit={postComment}>
-                            <textarea className='image-column_textarea' placeholder='Enter a comment' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
-                            <div className='image-column_form-btns'>
+                            <form className='profile-column_form' onSubmit={postComment}>
+                            <textarea className='profile-column_textarea' placeholder='Enter a comment..' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                            <div className='profile-column_form-btns'>
                             <button type='submit'><i className="far fa-paper-plane"></i></button>
                             <button type='reset' onClick={clearTextArea} ><i className="fas fa-eraser"></i></button>
                             </div>
                             </form>
-                            <div className='image-column_error' >{errors?.description}</div>
+                            <div className='profile-column_error' >{errors?.description}</div>
                         </div>
                     </div>
-                </div>
-                <div className='profile-column'>
-                    <div>
-                        <div></div>
-                        <div className='profile-column_username'>{thisImg.username}'s photo</div>
-                    </div>
-                    <div></div>
                 </div>
             </div>
         </div>

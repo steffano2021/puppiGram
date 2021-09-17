@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { fetchDeleteComment, fetchUpdateComment } from '../../store/comment';
 import './commentComp.css'
 
@@ -7,6 +8,7 @@ import './commentComp.css'
 const CommentComponent = ({comment, image_id}) => {
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const user_id = useSelector(state => state.session.user?.id);
     // const names = useSelector(state => state.usernames);
@@ -37,9 +39,14 @@ const CommentComponent = ({comment, image_id}) => {
         setErrors([]);
     }
 
+    const sendToProfilePage = () => {
+        history.push(`/profile/${comment.user_id}`)
+    }
+
     return (
         <div className='comment_container'>
-                <div className='comment_top'>
+                <div onClick={sendToProfilePage}  className='comment_top'>
+                    <img className='comment_avatar' src={comment.avatar} alt='' />
                     {comment.username}
                 </div>
                 {!editMode ?
@@ -66,7 +73,7 @@ const CommentComponent = ({comment, image_id}) => {
                 </div>
                 : null}
                 </div>
-            </div>
+        </div>
     )
 }
 
