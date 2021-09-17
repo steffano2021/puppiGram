@@ -91,10 +91,12 @@ const ImageDetailsPage = () => {
                         </div>
                     </div>
                     <div className='profile-column_comment' >
-                        <div className='profile-column_comment-list'>
-                            {comments?.map(comment => (
-                                <CommentComponent key={comment.id} comment={comment} image_id={image_id} />
-                            ))}
+                        <div className='hide-scroll'>
+                            <div className='profile-column_comment-list'>
+                                {comments?.map(comment => (
+                                    <CommentComponent key={comment.id} comment={comment} image_id={image_id} />
+                                    ))}
+                            </div>
                         </div>
                         <div>
                             <form className='profile-column_form' onSubmit={postComment}>

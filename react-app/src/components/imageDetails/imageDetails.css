@@ -75,12 +75,19 @@
 }
 
 /* only the comment list */
+.hide-scroll{
+    width: 300px;
+    overflow: hidden;
+}
+
 .profile-column_comment-list{
-    width: auto;
+    width: 300px;
     height: 380px;
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
     margin-bottom: 10px;
+    box-sizing: content-box;
+    padding-right: 17px;
 }
 
 .profile-column_form{
@@ -111,7 +118,7 @@
 }
 
 .profile-column_form-btns button:hover{
-    font-size: 16px;
+    color: rgb(252, 207, 207);
 }
 
 .profile-column_error{
