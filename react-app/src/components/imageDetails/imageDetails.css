@@ -3,7 +3,7 @@
 
 .imageDetails_page{
     width: 100%;
-    min-height: 90vh;
+    min-height: 92vh;
     height: auto;
     display: flex;
     justify-content: center;
@@ -13,8 +13,8 @@
 .details_container{
     margin-top: 45px;
     display: flex;
-    width: 800px;
-    height: auto;
+    width: 820px;
+    height: 550px;
     background-color: white;
 }
 
@@ -28,8 +28,14 @@
 
 .profile-column{
     width: 300px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
 }
-
 
 .image-column_image{
     width: 500px;
@@ -37,21 +43,26 @@
     /* border-radius: 8px; */
 }
 
-.image-column_qty-btn{
+.profile-column_qty-btn{
     display: flex;
     flex-direction: row;
-    width: 340px;
+    width: 250px;
     justify-content: space-between;
     font-size: 18px;
+    margin-left: 17px;
 }
 
-.image-column_buttons{
+.profile-column_buttons{
     display: flex;
     justify-content: space-between;
     width: 60px;
 }
 
-.image-column_buttons button{
+.profile-column_buttons button:hover{
+    font-size: 24px;
+}
+
+.profile-column_buttons button{
     border: none;
     background-color: transparent;
     font-size: 20px;
@@ -59,27 +70,27 @@
 }
 
 /* comment-list and the textArea */
-.image-column_comment{
+.profile-column_comment{
     height: auto;
 }
 
 /* only the comment list */
-.image-column_comment-list{
+.profile-column_comment-list{
     width: auto;
-    max-height: 315px;
+    height: 380px;
     overflow-y: auto;
     overflow-x: hidden;
     margin-bottom: 10px;
 }
 
-.image-column_form{
+.profile-column_form{
     /* border-style: dotted; */
     display: flex;
     justify-content: space-evenly;
 
 }
 
-.image-column_textarea{
+.profile-column_textarea{
     resize: none;
     border-radius: 4px;
     width: 300px;
@@ -87,25 +98,54 @@
     background-color: whitesmoke;
 }
 
-.image-column_form-btns{
+.profile-column_form-btns{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
     height: 70px;
 }
 
-.image-column_form-btns button{
+.profile-column_form-btns button{
     border: none;
     background-color: transparent;
 }
 
-.image-column_error{
+.profile-column_form-btns button:hover{
+    font-size: 16px;
+}
+
+.profile-column_error{
     color: red;
     font-size: 10px;
     margin-left: 50px;
 }
 
+/* makes a line underneath the image user info */
+.profile-column_userInfo{
+    margin-right: -10px;
+    margin-left: -10px;
+    border-bottom: thin solid rgba(0, 0, 0, 0.096);
+    padding-bottom: 8px;
+}
+
+.profile-column_user{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
 .profile-column_username{
     font-size: large;
     font-family: 'Azeret Mono', monospace;
+    cursor: pointer;
+}
+
+.profile-column-avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
 }
