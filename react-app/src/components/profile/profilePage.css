@@ -5,6 +5,7 @@
     min-height: 93vh;
     display: flex;
     justify-content: center;
+    margin-bottom: 30px;
 }
 
 .profile-page_container{
@@ -51,17 +52,15 @@
 }
 
 .profile-images_list{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: inline-flex;
+    gap: 20px;
     flex-wrap: wrap;
-    width: 980px;
+    width: 960px;
 }
 
 .profile-posted_image{
     width: 300px;
     height: 300px;
-    margin-bottom: 40px;
     cursor: pointer;
     border: 3px solid white;
 }
