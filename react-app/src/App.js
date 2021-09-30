@@ -21,6 +21,7 @@ import EditImageForm from './components/image/editImagePage';
 import ImageDetailsPage from './components/imageDetails/imageDetails';
 import Footer from './components/footer';
 import ProfilePage from './components/profile/profilePage';
+import EditProfilePage from './components/profile/editProfile';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -71,6 +72,11 @@ function App() {
         <ProtectedRoute path='/images/details/:id' exact={true}>
           <NavBar />
           <ImageDetailsPage />
+          <Footer />
+        </ProtectedRoute>
+        <ProtectedRoute path='/profile/edit' exact={true}>
+          <NavBar />
+          <EditProfilePage />
           <Footer />
         </ProtectedRoute>
         <ProtectedRoute path='/profile/:id' exact={true}>
