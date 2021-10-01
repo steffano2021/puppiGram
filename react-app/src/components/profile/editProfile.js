@@ -13,6 +13,10 @@ const EditProfilePage = () => {
     const [newAvatar, setNewAvatar] = useState('');
     const [disableBtn, setDisableBtn] = useState(false);
 
+    const [username, setUsername] = useState(user.username)
+    const [email, setEmail] = useState(user.email)
+    const [bio, setBio] = useState(user.bio)
+
 
     const changeAvatar = (e) => {
         console.log(e.target.files[0])
@@ -37,23 +41,28 @@ const EditProfilePage = () => {
     return (
         <div className='edit-profile_page'>
             <div>
-                <form className='edit-profile_container'>
+                <form className='edit-profile_container' onSubmit={submitChanges}>
+                    <h3> Edit Profile </h3>
                     <div className='edit-profile-avatar'>
                         <img src={tempAvatar} alt='profile image' className='profile_avatar' />
-                        <input type='file' onChange={changeAvatar} placeholder='Chnage' ></input>
+                        <input type='file' onChange={changeAvatar} ></input>
                     </div>
-                    <div className='edit-profile-input'>
+                    <div className='edit-profile-form-div'>
                         <label className='edit-profile-label'>Username</label>
-                        <input type='text'></input>
+                        <input className='edit-profile-input' type='text' onChange={(e)=> setUsername(e.target.value)} value={username} ></input>
                     </div>
-                    <div className='edit-profile-input'>
+                    <div className='edit-profile-form-div'>
                         <label className='edit-profile-label'>Email</label>
-                        <input type='text'></input>
+                        <input className='edit-profile-input' type='text' onChange={(e)=>setEmail(e.target.value)} value={email} ></input>
                     </div>
-                    <div className='edit-profile-input'>
+                    <div className='edit-profile-form-div'>
                         <label className='edit-profile-label'>Bio</label>
-                        <textarea>
+                        <textarea className='edit-profile-textarea' type='text' onChange={(e)=>setBio(e.target.value)} placeholder='Please create a bio' value={bio}>
                         </textarea>
+                    </div>
+                    <div className='edit-profile-form-buttons'>
+                        <button type='submit'>Submit</button>
+                        <button type='button'>Cancel</button>
                     </div>
                 </form>
             </div>
