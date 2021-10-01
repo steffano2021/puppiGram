@@ -2,11 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap');
 
 .postImage-page{
-    width: 100vw;
-    height: 90vh;
+    width: 100%;
+    height: auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 /* .imagePost_container{
