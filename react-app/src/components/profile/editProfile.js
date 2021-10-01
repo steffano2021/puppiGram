@@ -17,11 +17,18 @@ const EditProfilePage = () => {
     const [email, setEmail] = useState(user.email)
     const [bio, setBio] = useState(user.bio)
 
+    // hide the input type=file, and opens it by clicking a different button
+    const changeAvatarInput = useRef()
+    const openFileUploadWindow = () => {
+        changeAvatarInput.current.click()
+    }
 
     const changeAvatar = (e) => {
         console.log(e.target.files[0])
+        // if user cancels, it wont cause an error
+        if(!e.target.files.length) return
 
-        if (e.target.files.length){
+        if (e.target.files[0].type.includes("image/")){
             const file = e.target.files[0];
             const reader = new FileReader();
             reader.readAsDataURL(file)
@@ -34,8 +41,12 @@ const EditProfilePage = () => {
 
     const submitChanges = (e) => {
         e.preventDefault();
-        setDisableBtn(true);
+        // setDisableBtn(true);
 
+        console.log(newAvatar)
+        console.log(username)
+        console.log(email)
+        console.log(bio)
     }
 
     return (
@@ -45,7 +56,8 @@ const EditProfilePage = () => {
                     <h3> Edit Profile </h3>
                     <div className='edit-profile-avatar'>
                         <img src={tempAvatar} alt='profile image' className='profile_avatar' />
-                        <input type='file' onChange={changeAvatar} ></input>
+                        <input type="file" onChange={changeAvatar} id="selectedFile" accept="image/*" style={{display: "none"}} ref={changeAvatarInput} />
+                        <input type="button" value="Browse..." onClick={openFileUploadWindow} />
                     </div>
                     <div className='edit-profile-form-div'>
                         <label className='edit-profile-label'>Username</label>
