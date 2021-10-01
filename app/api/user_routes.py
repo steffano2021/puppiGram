@@ -13,3 +13,10 @@ def user_profile(id):
     images = { image.for_profile()['id']: image.for_profile() for image in images }
     result['images'] = images
     return result
+
+@user_routes.route('/profile/edit')
+def user_profile_edit():
+
+
+
+    return
