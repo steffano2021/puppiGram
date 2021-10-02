@@ -18,6 +18,36 @@ export const fetchUserProfile = (id) => async () => {
     }
 }
 
+export const updateProfile = (id, avatar, username, email, bio, method) => async () => {
+    let response;
+
+    if(method== 'PUT'){
+        const response = await fetch(`/api/users/profile/edit/${id}`,{
+
+        })
+
+    } else { // this is for patch, changing the avatar image
+        const form = new FormData();
+        // repeat as necessary  for each required form field
+        form.append('avatar', avatar);
+        form.append('username', username);
+        form.append('email', email);
+        form.append('bio', bio);
+        response = await fetch(`/api/users/profile/edit/${id}`, {
+            method: "PATCH",
+            body: form
+        });
+    }
+
+    if (response.ok){
+        const data = await response.json();
+        return data
+    } else {
+        return;
+    }
+}
+
+
 // let initialState = {};
 
 // export default function reducer(state = initialState, action) {

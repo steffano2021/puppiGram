@@ -6,6 +6,7 @@ import './editProfile.css'
 
 
 const EditProfilePage = () => {
+    const dispatch = useDispatch();
 
     const user = useSelector(state => state.session.user);
 
@@ -25,6 +26,7 @@ const EditProfilePage = () => {
 
     const changeAvatar = (e) => {
         console.log(e.target.files[0])
+
         // if user cancels, it wont cause an error
         if(!e.target.files.length) return
 
@@ -43,6 +45,17 @@ const EditProfilePage = () => {
         e.preventDefault();
         // setDisableBtn(true);
 
+        // no new avatar photo has been added so a put method will be sent
+        if(!newAvatar){
+            console.log('sending a put method')
+            // const data = dispatch(username, email, bio)
+
+        // new avatar was uploaded so sending over a patch method
+        } else {
+            console.log('sending a patch method')
+            // const data = dispatch(newAvatar, username, email, bio)
+        }
+        console.log(user.avatar)
         console.log(newAvatar)
         console.log(username)
         console.log(email)
@@ -57,7 +70,7 @@ const EditProfilePage = () => {
                     <div className='edit-profile-avatar'>
                         <img src={tempAvatar} alt='profile image' className='profile_avatar' />
                         <input type="file" onChange={changeAvatar} id="selectedFile" accept="image/*" style={{display: "none"}} ref={changeAvatarInput} />
-                        <input type="button" value="Browse..." onClick={openFileUploadWindow} />
+                        <button type="button" onClick={openFileUploadWindow}> Browse.. </button>
                     </div>
                     <div className='edit-profile-form-div'>
                         <label className='edit-profile-label'>Username</label>
