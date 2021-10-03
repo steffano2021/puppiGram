@@ -37,7 +37,7 @@ const ProfilePage = () => {
                                 {profile?.username}
                             </div>
                             <div>
-                                <button type='button' onClick={() => {history.push('/profile/edit')}} >Edit Profile</button>
+                                {/* <button type='button' onClick={() => {history.push('/profile/edit')}} >Edit Profile</button> */}
                             </div>
                         </div>
                         <div className='profile-right_middle'>

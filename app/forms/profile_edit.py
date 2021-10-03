@@ -11,8 +11,9 @@ def is_not_undefined(form,field):
         raise ValidationError('Please refresh the page')
 
 class EditProfileForm(FlaskForm):
-    id = IntegerField('id')
-    avatar = FileField('avatar', validators=[is_not_undefined])
-    username = StringField('username', validators=[Length(min=4, max=50, message="Caption must be less than %(max)d characters")])
-    email = StringField('email', Email(message='invalid email'))
-    bio = StringField('bio', validators=[Length(min=0, max=50, message="Caption must be less than %(max)d characters")])
+    # id = IntegerField('id')
+    # avatar = FileField('avatar', validators=[is_not_undefined])
+    avatar = FileField('avatar')
+    username = StringField('username', validators=[Length(min=4, max=50, message="Username must be less than %(max)d characters")])
+    email = StringField('email', validators=[Email(message='invalid email')])
+    bio = StringField('bio', validators=[Length(min=0, max=250, message="Bio must be less than %(max)d characters")])
