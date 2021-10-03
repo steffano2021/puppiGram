@@ -61,6 +61,8 @@ export const fetchCreateImage = (user_id, image, caption) => async (dispatch) =>
 
 export const fetchEditImage = (user_id, image, caption, method, id) => async (dispatch) => {
     let response;
+
+    // this is for put
     if (method == 'PUT'){
         response = await fetch(`/api/images/${id}`, {
             method: "PUT",
