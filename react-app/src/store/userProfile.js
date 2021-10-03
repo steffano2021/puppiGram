@@ -18,13 +18,19 @@ export const fetchUserProfile = (id) => async () => {
     }
 }
 
-export const updateProfile = (id, avatar, username, email, bio, method) => async () => {
+export const fetchUpdateProfile = (id, avatar, username, email, bio, method) => async () => {
     let response;
 
-    if(method== 'PUT'){
-        const response = await fetch(`/api/users/profile/edit/${id}`,{
-
+    if(method == 'PUT'){
+        response = await fetch(`/api/users/profile/edit/${id}`,{
+            method: "PUT",
+            headers: { 'Content-Type': "application/json" },
+            body: JSON.stringify({
+            username,
+            email,
+            bio,
         })
+    })
 
     } else { // this is for patch, changing the avatar image
         const form = new FormData();
@@ -33,17 +39,18 @@ export const updateProfile = (id, avatar, username, email, bio, method) => async
         form.append('username', username);
         form.append('email', email);
         form.append('bio', bio);
+
         response = await fetch(`/api/users/profile/edit/${id}`, {
             method: "PATCH",
             body: form
         });
     }
 
+    const data = await response.json();
     if (response.ok){
-        const data = await response.json();
         return data
     } else {
-        return;
+        return data;
     }
 }
 

@@ -1,19 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import { fetchUpdateProfile } from '../../store/userProfile';
 import './editProfile.css'
 
 
 
 const EditProfilePage = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const user = useSelector(state => state.session.user);
 
+    const [disableBtn, setDisableBtn] = useState(false);
+    const [errors, setErrors] = useState([]);
+
     const [tempAvatar, setTempAvatar] = useState(user.avatar);
     const [newAvatar, setNewAvatar] = useState('');
-    const [disableBtn, setDisableBtn] = useState(false);
-
     const [username, setUsername] = useState(user.username)
     const [email, setEmail] = useState(user.email)
     const [bio, setBio] = useState(user.bio)
@@ -41,25 +44,36 @@ const EditProfilePage = () => {
         }
     }
 
-    const submitChanges = (e) => {
+    const submitChanges = async(e) => {
         e.preventDefault();
         // setDisableBtn(true);
-
-        // no new avatar photo has been added so a put method will be sent
-        if(!newAvatar){
-            console.log('sending a put method')
-            // const data = dispatch(username, email, bio)
-
-        // new avatar was uploaded so sending over a patch method
-        } else {
-            console.log('sending a patch method')
-            // const data = dispatch(newAvatar, username, email, bio)
-        }
         console.log(user.avatar)
         console.log(newAvatar)
         console.log(username)
         console.log(email)
         console.log(bio)
+
+        let data;
+
+        // no new avatar photo shas been added so a put method will be sent
+        if(!newAvatar){
+            console.log('sending a put method')
+            data = await dispatch(fetchUpdateProfile(user.id, newAvatar, username, email, bio,'PUT'))
+
+        } else { // new avatar was uploaded so sending over a patch method
+            console.log('sending a patch method')
+            data = await dispatch(fetchUpdateProfile(user.id, newAvatar, username, email, bio, 'PATCH'))
+        }
+
+        if (data.errors){
+            setErrors(data.errors);
+            // setDisableBtn(false);
+            return
+        } else {
+            // history.push('/home')
+            return
+        }
+
     }
 
     return (
